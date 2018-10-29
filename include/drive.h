@@ -21,4 +21,57 @@
  */
 void motorSpeedStick(unsigned char channel, int speed);
 
+/**
+ * @brief sets the speed for the robot to drive forward for a given amount of time(s)
+ * @param speed
+ * @param time
+ * @author Michael Baraty
+ * @date 10/26/2018
+ */
+void robotDriveForward(int speed, double time);
+
+/**
+ * @brief stops the robot drivebase
+ * @author Michael Baraty
+ * @date 10/26/2018
+ */
+void driveStop();
+
+/**
+ * @brief sets the speed for the flywheel
+ * @param speed
+ * @author Michael Baraty
+ * @date 10/26/2018
+ */
+ void flywheelSet(int speed);
+
+ /**
+  * @brief stops the flywheel
+  * @author Michael Baraty
+  * @date 10/26/2018
+  */
+  void flywheelStop();
+
+ /**
+  * @brief activates the intake mechanism
+  * @author Michael Baraty
+  * @date 10/26/2018
+  */
+  void enableIntake();
+
+  /**
+   * @brief disables the intake mechanism
+   * @author Michael Baraty
+   * @date 10/26/2018
+   */
+   void disableIntake();
+
+
+   /**
+    * @brief drives the robot
+    * @author Michael Baraty
+    * @date 10/26/2018
+    */
+   void drive();
+
 #endif
