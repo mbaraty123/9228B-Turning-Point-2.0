@@ -5,6 +5,13 @@
  #ifndef _DRIVE_H_
  #define _DRIVE_H_
 
+ /**
+  * @brief defines the directions in which a set of motors can be moving
+  * @author Michael Baraty
+  * @date 10/31/2018
+ **/
+enum Direction { forward, reverse };
+
 /**
  * @brief defines the minimum reading from the joysticks to avoid underpowering the motors
  * @author Michael Baraty
@@ -43,35 +50,34 @@ void driveStop();
  * @author Michael Baraty
  * @date 10/26/2018
  */
- void flywheelSet(int speed);
+void flywheelSet(int speed);
 
- /**
+/**
   * @brief stops the flywheel
   * @author Michael Baraty
   * @date 10/26/2018
   */
-  void flywheelStop();
+void flywheelStop();
 
- /**
-  * @brief activates the intake mechanism
+/**
+  * @brief activates the intake mechanism at a certain speed
   * @author Michael Baraty
-  * @date 10/26/2018
+  * @date 10/31/2018
   */
-  void enableIntake();
+void intakeSet(Direction dir);
 
-  /**
+/**
    * @brief disables the intake mechanism
    * @author Michael Baraty
    * @date 10/26/2018
    */
-   void disableIntake();
+void intakeStop();
 
-
-   /**
+/**
     * @brief drives the robot
     * @author Michael Baraty
     * @date 10/26/2018
     */
-   void drive();
+void drive();
 
 #endif

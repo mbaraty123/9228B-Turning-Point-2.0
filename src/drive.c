@@ -3,10 +3,6 @@
 #include "motor_ports.h"
 #include "controller.h"
 
-void motorSpeedStick(unsigned char channel, int speed) {
-  motorSet(channel, abs(speed) > THRESHOLD? speed: 0);
-}
-
 void driveStop() {
   motorSet(MOTOR_BACK_LEFT, 0);
   motorSet(MOTOR_BACK_RIGHT, 0);
@@ -32,12 +28,17 @@ void flywheelStop() {
   flywheelSet(0);
 }
 
-void enableIntake() {
+void intakeSet(Direction dir) {
+  if(dir == forward) {
   motorSet(MOTOR_INTAKE, MIN_SPEED);
   motorSet(MOTOR_BELT, MAX_SPEED);
+} else if (dir == reverse) {
+  motorSet(MOTOR_INTAKE, MAX_SPEED);
+  motorSet(MOTOR_BELT, MIN_SPEED);
+}
 }
 
-void disableIntake() {
+void intakeStop() {
   motorSet(MOTOR_INTAKE, 0);
   motorSet(MOTOR_BELT, 0);
 }
@@ -45,32 +46,24 @@ void disableIntake() {
 void drive() {
 
 
-  int stickLX = abs(joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_LEFT_X)) > THRESHOLD? joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_LEFT_X): 0;
-  int stickLY = abs(joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_LEFT_Y)) > THRESHOLD? joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_LEFT_Y): 0;
-  int stickRX = abs(joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_RIGHT_X)) > THRESHOLD? joystickGetAnalog(JOYSTICK_MAIN, JOYSTICK_RIGHT_X): 0;
+  int stickLX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_X);
+  int stickLY = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_Y);
+  int stickRX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_RIGHT_X);
 
   motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX) / 2);
   motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX) / 2);
   motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX) / 2);
   motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX) / 2);
 
-  bool intakeIsToggled = false;
   bool firingMode = false;
   bool firingSpeed = false;
 
   if(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_UP)) {
-    intakeIsToggled = true;
-  }
-  if(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_DOWN)) {
-    intakeIsToggled = false;
-  }
-
-  if(intakeIsToggled) {
-    motorSet(MOTOR_INTAKE, -127);
-    motorSet(MOTOR_BELT, 127);
+    intakeSet(forward);
+  } else if(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_DOWN)) {
+    intakeSet(reverse);
   } else {
-    motorSet(MOTOR_INTAKE, 0);
-    motorSet(MOTOR_BELT, 0);
+    intakeStop();
   }
 
   if(joystickGetDigital(JOYSTICK_MAIN, 5, JOY_UP)) {
@@ -87,14 +80,11 @@ void drive() {
   }
 
   if(firingMode && firingSpeed) {
-    motorSet(MOTOR_FLYWHEEL_A, -127);
-    motorSet(MOTOR_FLYWHEEL_B, -127);
+    flywheelSet(110);
   } else if(firingMode && !firingSpeed) {
-    motorSet(MOTOR_FLYWHEEL_A, -60);
-    motorSet(MOTOR_FLYWHEEL_B, -60);
+    flywheelSet(60);
   } else {
-    motorSet(MOTOR_FLYWHEEL_A, 0);
-    motorSet(MOTOR_FLYWHEEL_B, 0);
+    flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3);
   }
 
 }
