@@ -14,11 +14,11 @@ int gyroGetA() {
 void gyroTurn(int degree) {
   if(gyroGetA() >= abs(degree - 180)) {
     while(gyroGetA() != degree) {
-      robotSpin(counterclockwise);
+      robotSpin(counterclockwise, 70);
     }
   } else {
     while(gyroGetA() != degree) {
-      robotSpin(clockwise);
+      robotSpin(clockwise, 70);
     }
   }
 }

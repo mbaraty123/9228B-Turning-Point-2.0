@@ -5,6 +5,10 @@
  #ifndef _DRIVE_H_
  #define _DRIVE_H_
 
+ #include <API.h>
+ #include "motor_ports.h"
+ #include "controller.h"
+ #include "gyro.h"
  /**
   * @brief defines the directions in which a set of motors can be moving
   * @author Michael Baraty
@@ -84,6 +88,8 @@ void intakeStop();
     */
 void drive();
 
-void robotSpin(Direction dir);
+void robotSpin(Direction dir, int speed);
+
+void robotStraighten();
 
 #endif

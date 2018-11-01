@@ -1,7 +1,4 @@
 #include "drive.h"
-#include <API.h>
-#include "motor_ports.h"
-#include "controller.h"
 
 void robotStop() {
   motorSet(MOTOR_BACK_LEFT, 0);
@@ -90,20 +87,28 @@ void drive() {
     flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3);
   }
 
+  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)) {
+    robotStraighten();
+  }
+
 }
 
-void robotSpin(Direction dir) {
+void robotSpin(Direction dir, int speed) {
   if(dir == clockwise) {
-    motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED);
-    motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
-    motorSet(MOTOR_BACK_RIGHT, MIN_SPEED);
-    motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
+    motorSet(MOTOR_FRONT_RIGHT, -speed);
+    motorSet(MOTOR_FRONT_LEFT, speed);
+    motorSet(MOTOR_BACK_RIGHT, -speed);
+    motorSet(MOTOR_FRONT_LEFT, speed);
   } else if(dir == counterclockwise) {
-    motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED);
-    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED);
-    motorSet(MOTOR_BACK_RIGHT, MAX_SPEED);
-    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED);
+    motorSet(MOTOR_FRONT_RIGHT, speed);
+    motorSet(MOTOR_FRONT_LEFT, -speed);
+    motorSet(MOTOR_BACK_RIGHT, speed);
+    motorSet(MOTOR_FRONT_LEFT, -speed);
   } else {
     robotStop();
   }
+}
+
+void robotStraighten() {
+  gyroTurn(0);
 }
