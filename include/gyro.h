@@ -15,7 +15,7 @@
  */
 #define GYRO_PORT 1
 
-int get_gyro();
+int gyroGetA();
 
 /**
  * Special Gyro multiplier for tuning in Gyro
@@ -37,15 +37,10 @@ int get_gyro();
 bool init_main_gyro();
 
 /**
- *  @brief Gets the Gyro angular velocity.
- *  @return the angular velocity
+ *  @brief Spins the robot to face a certain degree.
  *  @author Michael Baraty
  *  @date 10/31/18
  */
-float get_main_gyro_angluar_velocity();
-
-void gyroTurn(int degrees, int minPower, int defaultSpeed);
-
-bool init_main_gyro();
+void gyroTurn(int degrees);
 
 #endif

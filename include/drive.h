@@ -10,8 +10,12 @@
   * @author Michael Baraty
   * @date 10/31/2018
  **/
-enum Direction { forward, reverse };
-
+typedef enum {
+  forward,
+  reverse,
+  clockwise,
+  counterclockwise
+} Direction;
 /**
  * @brief defines the minimum reading from the joysticks to avoid underpowering the motors
  * @author Michael Baraty
@@ -42,7 +46,7 @@ void robotDriveForward(int speed, double time);
  * @author Michael Baraty
  * @date 10/26/2018
  */
-void driveStop();
+void robotStop();
 
 /**
  * @brief sets the speed for the flywheel
@@ -79,5 +83,7 @@ void intakeStop();
     * @date 10/26/2018
     */
 void drive();
+
+void robotSpin(Direction dir);
 
 #endif

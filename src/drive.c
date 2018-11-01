@@ -3,7 +3,7 @@
 #include "motor_ports.h"
 #include "controller.h"
 
-void driveStop() {
+void robotStop() {
   motorSet(MOTOR_BACK_LEFT, 0);
   motorSet(MOTOR_BACK_RIGHT, 0);
   motorSet(MOTOR_FRONT_RIGHT, 0);
@@ -16,7 +16,7 @@ void robotDriveForward(int speed, double time) {
   motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED);
   motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
   wait(time * 1000);
-  driveStop();
+  robotStop();
 }
 
 void flywheelSet(int speed) {
@@ -30,12 +30,15 @@ void flywheelStop() {
 
 void intakeSet(Direction dir) {
   if(dir == forward) {
-  motorSet(MOTOR_INTAKE, MIN_SPEED);
-  motorSet(MOTOR_BELT, MAX_SPEED);
-} else if (dir == reverse) {
-  motorSet(MOTOR_INTAKE, MAX_SPEED);
-  motorSet(MOTOR_BELT, MIN_SPEED);
-}
+    motorSet(MOTOR_INTAKE, MIN_SPEED);
+    motorSet(MOTOR_BELT, MAX_SPEED);
+  } else if (dir == reverse) {
+    motorSet(MOTOR_INTAKE, MAX_SPEED);
+    motorSet(MOTOR_BELT, MIN_SPEED);
+  } else {
+    motorSet(MOTOR_INTAKE, 0);
+    motorSet(MOTOR_BELT, 0);
+  }
 }
 
 void intakeStop() {
@@ -87,4 +90,20 @@ void drive() {
     flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3);
   }
 
+}
+
+void robotSpin(Direction dir) {
+  if(dir == clockwise) {
+    motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED);
+    motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
+    motorSet(MOTOR_BACK_RIGHT, MIN_SPEED);
+    motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
+  } else if(dir == counterclockwise) {
+    motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED);
+    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED);
+    motorSet(MOTOR_BACK_RIGHT, MAX_SPEED);
+    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED);
+  } else {
+    robotStop();
+  }
 }
