@@ -1,7 +1,5 @@
 #include "encoders.h"
 
-static bool encoders_initialized = false;
-
 bool imeInit() {
   #ifdef IME_NUMBER
     int count = imeInitializeAll();
