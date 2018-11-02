@@ -1,7 +1,7 @@
 /**
  * @file encoders.h
  * @author Michael Baraty
- * @date 10/25/2018
+ * @date 11/2/2018
  * @brief wrapper around encoder functions
  **/
 #ifndef _ENCODERS_H_
@@ -19,41 +19,33 @@
  **/
 #define IME_NUMBER 4
 
+#define COUNTS_PER_ROTATION 392
+
+#define WHEEL_DIAMETER_INCHES 4
+
+#define ENCODER_INCH (COUNTS_PER_ROTATION / WHEEL_DIAMETER_INCHES * M_PI)
+
+#define ENCODER_TILE (ENCODER_INCH * 12)
 /**
  * @brief Initializes all motor encoders
  * @author Michael Baraty
  * @date 10/25/2018
  * @see IME_NUMBER
  **/
-bool init_encoders();
+bool imeInit();
 
 /**
  * @brief Gets the encoder ticks since last reset
  * @author Michael Baraty
  * @date 10/25/2018
  **/
-int get_encoder_ticks(const unsigned char address);
+int imeGetTicks(const unsigned char address);
 
 /**
  * @brief Gets the encoder reads
  * @author Michael Baraty
  * @date 10/25/2018
  **/
-int get_encoder_velocity(const unsigned char address);
-
-/**
- * @brief Gets the average of four encoders or the value of one encoder
- * @author Michael Baraty
- * @date 10/25/2018
- **/
-int ime_get_average(bool multi);
-
-int ime_get_right_dist();
-
-int ime_get_left_dist();
-
-int ime_get_right_vel();
-
-int ime_get_left_vel();
+int imeGetVelocityA(const unsigned char address);
 
 #endif
