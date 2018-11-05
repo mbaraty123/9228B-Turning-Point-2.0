@@ -7,14 +7,14 @@ void robotStop() {
   motorSet(MOTOR_FRONT_LEFT, 0);
 }
 
-void robotDriveForward(int speed, double time) {
+/*void robotDriveForward(int speed, double time) {
   motorSet(MOTOR_BACK_LEFT, MAX_SPEED);
   motorSet(MOTOR_BACK_RIGHT, MAX_SPEED);
   motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED);
   motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
   wait(time * 1000);
   robotStop();
-}
+}*/
 
 void flywheelSet(int speed) {
   motorSet(MOTOR_FLYWHEEL_A, -speed);
@@ -111,4 +111,28 @@ void robotSpin(Direction dir, int speed) {
 
 void robotStraighten() {
   gyroTurn(0);
+}
+
+void robotDriveForward() {
+  motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MAX_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, MAX_SPEED / 2);
+}
+
+void robotDriveReversse() {
+  motorSet(MOTOR_BACK_LEFT, MIN_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+}
+
+void robotDriveStraight(Direction dir) {
+  if(dir == forward) {
+    robotDriveForward();
+  } else if(dir == reverse) {
+    robotDriveReverse();
+  } else {
+    robotStop();
+  }
 }

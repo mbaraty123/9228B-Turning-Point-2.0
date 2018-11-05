@@ -43,7 +43,7 @@ void motorSpeedStick(unsigned char channel, int speed);
  * @author Michael Baraty
  * @date 10/26/2018
  */
-void robotDriveForward(int speed, double time);
+//void robotDriveForward(int speed, double time);
 
 /**
  * @brief stops the robot drivebase
@@ -91,5 +91,11 @@ void drive();
 void robotSpin(Direction dir, int speed);
 
 void robotStraighten();
+
+void robotDriveForward();
+
+void robotDriveStraight(Direction dir);
+
+void robotDriveReverse();
 
 #endif

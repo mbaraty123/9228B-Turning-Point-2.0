@@ -3,5 +3,5 @@
 #include "drive.h"
 
 int joystickGetAnalogA(unsigned char joystick, unsigned char channel) {
-  return joystickGetAnalog(joystick, channel) > THRESHOLD? abs(joystickGetAnalog(joystick, channel)): 0;
+  return abs(joystickGetAnalog(joystick, channel)) > THRESHOLD? joystickGetAnalog(joystick, channel): 0;
 }

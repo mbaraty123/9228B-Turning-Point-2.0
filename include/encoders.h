@@ -8,6 +8,7 @@
 #define _ENCODERS_H_
 
 #include "API.h"
+#include "drive.h"
 
 /**
  * @brief The number of IMEs.
@@ -26,6 +27,15 @@
 #define ENCODER_INCH (COUNTS_PER_ROTATION / WHEEL_DIAMETER_INCHES * M_PI)
 
 #define ENCODER_TILE (ENCODER_INCH * 12)
+
+#define IME_FRONT_LEFT 0
+
+#define IME_FRONT_RIGHT 1
+
+#define IME_BACK_LEFT 2
+
+#define IME_BACK_RIGHT 3
+
 /**
  * @brief Initializes all motor encoders
  * @author Michael Baraty
@@ -47,5 +57,11 @@ int imeGetTicks(const unsigned char address);
  * @date 10/25/2018
  **/
 int imeGetVelocityA(const unsigned char address);
+
+void imeMoveFor(int ticks, Direction dir);
+
+int imeGetAverageTicks();
+
+void imeResetAll();
 
 #endif

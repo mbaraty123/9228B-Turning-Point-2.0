@@ -8,10 +8,10 @@ bool imeInit() {
       imeReset(0);
       return false;
     }
-    imeReset(0);
-    imeReset(1);
-    imeReset(2);
-    imeReset(3);
+    imeReset(IME_FRONT_LEFT);
+    imeReset(IME_FRONT_RIGHT);
+    imeReset(IME_BACK_LEFT);
+    imeReset(IME_BACK_RIGHT);
     return true;
   #else
     return imeInitializeAll()
@@ -28,4 +28,30 @@ int imeGetVelocityA(const unsigned char address) {
   int i = 0;
   imeGetVelocity(address, &i);
   return i;
+}
+
+void imeMoveFor(int ticks, Direction dir) {
+  if(dir == forward) {
+    while(imeGetAverageTicks() <= ticks) {
+      robotDriveStraight(forward);
+    }
+  } else if(dir == reverse) {
+    while(imeGetAverageTicks() >= ticks){
+      robotDriveStraight(reverse);
+    }
+  } else {
+    robotStop();
+  }
+}
+
+int imeGetAverageTicks() {
+  return ((imeGetTicks(IME_FRONT_LEFT) + imeGetTicks(IME_FRONT_RIGHT) +
+    imeGetTicks(IME_BACK_LEFT) + imeGetTicks(IME_FRONT_RIGHT)) / 4);
+}
+
+void imeResetAll() {
+  imeReset(IME_FRONT_LEFT);
+  imeReset(IME_FRONT_RIGHT);
+  imeReset(IME_BACK_LEFT);
+  imeReset(IME_BACK_RIGHT);
 }
