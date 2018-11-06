@@ -50,10 +50,10 @@ void drive() {
   int stickLY = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_Y);
   int stickRX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_RIGHT_X);
 
-  motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX) / 2);
-  motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX) / 2);
-  motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX) / 2);
-  motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX) / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX));
+  motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX));
+  motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX));
+  motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX));
 
   bool firingMode = false;
   bool firingSpeed = false;
@@ -84,11 +84,19 @@ void drive() {
   } else if(firingMode && !firingSpeed) {
     flywheelSet(60);
   } else {
-    flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3);
+    flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3 >= 1? motorGet(MOTOR_FLYWHEEL_A) / 3: 0);
   }
 
   if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)) {
     robotStraighten();
+  }
+
+  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_UP)) {
+    flipperMove(up);
+  }  else if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_LEFT)) {
+    flipperMove(down);
+  } else {
+    flipperStop();
   }
 
 }
@@ -120,7 +128,7 @@ void robotDriveForward() {
   motorSet(MOTOR_FRONT_LEFT, MAX_SPEED / 2);
 }
 
-void robotDriveReversse() {
+void robotDriveReverse() {
   motorSet(MOTOR_BACK_LEFT, MIN_SPEED / 2);
   motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
   motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
@@ -135,4 +143,16 @@ void robotDriveStraight(Direction dir) {
   } else {
     robotStop();
   }
+}
+
+void flipperMove(FlipperDirection dir) {
+  if(dir == up) {
+    motorSet(MOTOR_FLIPPER, MIN_SPEED);
+  } else if(dir == down) {
+    motorSet(MOTOR_FLIPPER, MAX_SPEED);
+  }
+}
+
+void flipperStop() {
+  motorSet(MOTOR_FLIPPER, 0);
 }

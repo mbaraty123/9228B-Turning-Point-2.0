@@ -46,22 +46,42 @@ bool imeInit();
 
 /**
  * @brief Gets the encoder ticks since last reset
+ * @param address
  * @author Michael Baraty
  * @date 10/25/2018
  **/
 int imeGetTicks(const unsigned char address);
 
 /**
- * @brief Gets the encoder reads
+ * @brief Gets the encoder velocity
+ * @return velocity
+ * @param address
  * @author Michael Baraty
- * @date 10/25/2018
+ * @date 11/8/2018
  **/
 int imeGetVelocityA(const unsigned char address);
 
+/**
+ * @brief moves at a given velocity for a certain number of ticks
+ * @param ticks
+ * @param dir
+ * @author Michael Baraty
+ * @date 11/8/2018
+ **/
 void imeMoveFor(int ticks, Direction dir);
 
+/**
+ * @brief Gets the average encoder ticks since the last reset
+ * @author Michael Baraty
+ * @date 11/8/2018
+ **/
 int imeGetAverageTicks();
 
+/**
+ * @brief Resets all the encoders
+ * @author Michael Baraty
+ * @date 11/8/2018
+ **/
 void imeResetAll();
 
 #endif

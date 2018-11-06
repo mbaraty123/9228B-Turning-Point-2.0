@@ -20,6 +20,12 @@ typedef enum {
   clockwise,
   counterclockwise
 } Direction;
+
+typedef enum {
+  up,
+  down
+} FlipperDirection;
+
 /**
  * @brief defines the minimum reading from the joysticks to avoid underpowering the motors
  * @author Michael Baraty
@@ -78,7 +84,7 @@ void intakeSet(Direction dir);
    * @brief disables the intake mechanism
    * @author Michael Baraty
    * @date 10/26/2018
-   */
+  */
 void intakeStop();
 
 /**
@@ -88,14 +94,52 @@ void intakeStop();
     */
 void drive();
 
+/**
+   * @brief spins the robot in a given direction at a given speed
+   * @param dir
+   * @param speed
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
 void robotSpin(Direction dir, int speed);
 
+/**
+   * @brief straightens the robot to face the starting direction
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
 void robotStraighten();
 
+/**
+   * @brief drives the robot forward at half speed
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
 void robotDriveForward();
 
+/**
+   * @brief drives the robot straight in a given direction
+   * @param dir
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
 void robotDriveStraight(Direction dir);
 
+/**
+   * @brief drives the robot backwards at half speed
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
 void robotDriveReverse();
+
+/**
+   * @brief moves the flipper in a certain direction
+   * @param dir
+   * @author Michael Baraty
+   * @date 11/6/2018
+  */
+void flipperMove(FlipperDirection dir);
+
+void flipperStop();
 
 #endif
