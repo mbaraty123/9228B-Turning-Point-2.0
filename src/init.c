@@ -40,5 +40,4 @@ void initializeIO() {
  */
 void initialize() {
   init_main_gyro();
-  potentiometerInit();
 }

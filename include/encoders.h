@@ -9,6 +9,7 @@
 
 #include "API.h"
 #include "drive.h"
+#include "math.h"
 
 /**
  * @brief The number of IMEs.
@@ -20,11 +21,7 @@
  **/
 #define IME_NUMBER 4
 
-#define COUNTS_PER_ROTATION 392
-
-#define WHEEL_DIAMETER_INCHES 4
-
-#define ENCODER_INCH (COUNTS_PER_ROTATION / WHEEL_DIAMETER_INCHES * M_PI)
+#define ENCODER_INCH (392 / 4 * M_PI)
 
 #define ENCODER_TILE (ENCODER_INCH * 12)
 

@@ -11,6 +11,8 @@
  */
 
 #include <main.h>
+#include "drive.h"
+#include "encoders.h"
 
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
@@ -27,4 +29,15 @@
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
 void autonomous() {
+  //fire up the flywheels
+  flywheelSet(60);
+  intakeSet(forward);
+  taskDelay(1000);
+  motorStopAll();
+
+  //drive for bottom flag
+  imeMoveFor(ENCODER_TILE, forward);
+  imeMoveFor(ENCODER_TILE, forward);
+
+
 }

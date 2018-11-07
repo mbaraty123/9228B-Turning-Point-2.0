@@ -35,9 +35,11 @@ void imeMoveFor(int ticks, Direction dir) {
     while(imeGetAverageTicks() <= ticks) {
       robotDriveStraight(forward);
     }
+    robotStop();
   } else if(dir == reverse) {
     while(imeGetAverageTicks() >= ticks){
       robotDriveStraight(reverse);
+      robotStop();
     }
   } else {
     robotStop();

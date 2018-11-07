@@ -21,6 +21,11 @@ typedef enum {
   counterclockwise
 } Direction;
 
+/**
+ * @brief defines the directions in which the cap flipper can move
+ * @author Michael Baraty
+ * @date 11/7/2018
+**/
 typedef enum {
   up,
   down
@@ -41,15 +46,6 @@ typedef enum {
  * @date 10/25/2018
  */
 void motorSpeedStick(unsigned char channel, int speed);
-
-/**
- * @brief sets the speed for the robot to drive forward for a given amount of time(s)
- * @param speed
- * @param time
- * @author Michael Baraty
- * @date 10/26/2018
- */
-//void robotDriveForward(int speed, double time);
 
 /**
  * @brief stops the robot drivebase
@@ -140,6 +136,11 @@ void robotDriveReverse();
   */
 void flipperMove(FlipperDirection dir);
 
+/**
+   * @brief stops the flipper in a certain direction
+   * @author Michael Baraty
+   * @date 11/7/2018
+  */
 void flipperStop();
 
 #endif
