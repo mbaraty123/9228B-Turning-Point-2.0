@@ -21,15 +21,13 @@
  **/
 #define IME_NUMBER 4
 
-#define ENCODER_INCH (392 / 4 * M_PI)
+#define ENCODER_TILE (392 / 4 * 3.14 * 12)
 
-#define ENCODER_TILE (ENCODER_INCH * 12)
+#define IME_FRONT_LEFT 1
 
-#define IME_FRONT_LEFT 0
+#define IME_FRONT_RIGHT 2
 
-#define IME_FRONT_RIGHT 1
-
-#define IME_BACK_LEFT 2
+#define IME_BACK_LEFT 0
 
 #define IME_BACK_RIGHT 3
 
@@ -81,4 +79,7 @@ int imeGetAverageTicks();
  **/
 void imeResetAll();
 
+/*void driveDistance(int distance, int speed, void (*functionPtr)(int),
+                           void (*start_function)(void *));
+*/
 #endif

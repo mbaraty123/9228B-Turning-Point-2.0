@@ -32,9 +32,11 @@ int imeGetVelocityA(const unsigned char address) {
 
 void imeMoveFor(int ticks, Direction dir) {
   if(dir == forward) {
-    while(imeGetAverageTicks() <= ticks) {
-      robotDriveStraight(forward);
+    while(true) {
+      if(imeGetAverageTicks() <= ticks) {
+        robotDriveStraight(forward);
     }
+  }
     robotStop();
   } else if(dir == reverse) {
     while(imeGetAverageTicks() >= ticks){
@@ -57,3 +59,23 @@ void imeResetAll() {
   imeReset(IME_BACK_LEFT);
   imeReset(IME_BACK_RIGHT);
 }
+/*
+void driveDistance(int distance, int speed, void (*functionPtr)(int),
+                           void (*start_function)(void *)) {
+  //int initial = ime_get_average(false);
+  TaskHandle task;
+  if (start_function != NULL) {
+    task = taskCreate(start_function, TASK_DEFAULT_STACK_SIZE, NULL,
+                      TASK_PRIORITY_DEFAULT);
+  }
+
+  int initial = imeGetAverageTicks();
+
+  while(abs(imeGetAverageTicks() - initial) < distance){
+    robotDriveForward();
+    printf("%d", abs(imeGetAverageTicks()));
+    wait(30);
+  }
+  robotStop();
+
+}*/

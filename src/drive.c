@@ -123,16 +123,16 @@ void robotStraighten() {
 
 void robotDriveForward() {
   motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
-  motorSet(MOTOR_BACK_RIGHT, MAX_SPEED / 2);
-  motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED / 2);
-  motorSet(MOTOR_FRONT_LEFT, MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
 }
 
 void robotDriveReverse() {
   motorSet(MOTOR_BACK_LEFT, MIN_SPEED / 2);
-  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
-  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
-  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MAX_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, MAX_SPEED / 2);
 }
 
 void robotDriveStraight(Direction dir) {
