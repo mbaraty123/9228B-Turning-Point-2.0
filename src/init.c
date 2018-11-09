@@ -40,5 +40,9 @@ void initializeIO() {
  */
 void initialize() {
   init_main_gyro();
+<<<<<<< HEAD
   imeInitializeAll();
+=======
+  potentiometerInit();
+>>>>>>> parent of f0a4a14... Auton Work
 }

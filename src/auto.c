@@ -11,8 +11,6 @@
  */
 
 #include <main.h>
-#include "drive.h"
-#include "encoders.h"
 
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
@@ -29,6 +27,9 @@
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
 void autonomous() {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> parent of f0a4a14... Auton Work
 }

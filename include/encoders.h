@@ -9,7 +9,6 @@
 
 #include "API.h"
 #include "drive.h"
-#include "math.h"
 
 /**
  * @brief The number of IMEs.
@@ -21,7 +20,15 @@
  **/
 #define IME_NUMBER 4
 
+<<<<<<< HEAD
 #define ENCODER_TILE (392 / 4 * 3.14 * 12)
+=======
+#define COUNTS_PER_ROTATION 392
+
+#define WHEEL_DIAMETER_INCHES 4
+
+#define ENCODER_INCH (COUNTS_PER_ROTATION / WHEEL_DIAMETER_INCHES * M_PI)
+>>>>>>> parent of f0a4a14... Auton Work
 
 #define IME_FRONT_LEFT 1
 

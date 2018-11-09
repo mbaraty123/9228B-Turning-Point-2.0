@@ -36,12 +36,14 @@ void imeMoveFor(int ticks, Direction dir) {
       if(imeGetAverageTicks() <= ticks) {
         robotDriveStraight(forward);
     }
+<<<<<<< HEAD
   }
     robotStop();
+=======
+>>>>>>> parent of f0a4a14... Auton Work
   } else if(dir == reverse) {
     while(imeGetAverageTicks() >= ticks){
       robotDriveStraight(reverse);
-      robotStop();
     }
   } else {
     robotStop();
