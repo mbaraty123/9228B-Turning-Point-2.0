@@ -9,8 +9,11 @@
  #include "motor_ports.h"
  #include "controller.h"
  #include "gyro.h"
+
+
+
  /**
-  * @brief defines the directions in which a set of motors can be moving
+  * @brief defines the directions in which the drive base can be moving
   * @author Michael Baraty
   * @date 10/31/2018
  **/
@@ -21,6 +24,11 @@ typedef enum {
   counterclockwise
 } Direction;
 
+/**
+ * @brief defines the directions in which the intake mechanism can move
+ * @author Michael Baraty
+ * @date 11/10/2018
+**/
 typedef enum {
   up,
   down
@@ -31,25 +39,16 @@ typedef enum {
  * @author Michael Baraty
  * @date 10/25/2018
 **/
-#define THRESHOLD 10
+#define THRESHOLD 20
 
 /**
- * @brief sets the spped of the motors according to a joystick taking into account the threshold
+ * @brief sets the speed of the motors according to a joystick taking into account the threshold
  * @param channel
  * @param speed
  * @author Michael Baraty
  * @date 10/25/2018
  */
 void motorSpeedStick(unsigned char channel, int speed);
-
-/**
- * @brief sets the speed for the robot to drive forward for a given amount of time(s)
- * @param speed
- * @param time
- * @author Michael Baraty
- * @date 10/26/2018
- */
-//void robotDriveForward(int speed, double time);
 
 /**
  * @brief stops the robot drivebase
@@ -140,6 +139,11 @@ void robotDriveReverse();
   */
 void flipperMove(FlipperDirection dir);
 
+/**
+   * @brief stops the cap flipper
+   * @author Michael Baraty
+   * @date 11/10/2018
+  */
 void flipperStop();
 
 #endif

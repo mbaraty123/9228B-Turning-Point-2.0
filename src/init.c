@@ -13,6 +13,7 @@
 #include "main.h"
 #include "gyro.h"
 #include "potentiometer.h"
+#include "encoders.h"
 
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
@@ -40,9 +41,44 @@ void initializeIO() {
  */
 void initialize() {
   init_main_gyro();
-<<<<<<< HEAD
   imeInitializeAll();
-=======
-  potentiometerInit();
->>>>>>> parent of f0a4a14... Auton Work
+/*  init_main_lcd(uart2);
+
+  setTeamName("9228B");
+
+
+lcdSetBacklight(uart2, false);
+
+lcdSetText(uart2, 1, "Auton Routine");
+lcdSetText(uart2, 2, "NEAR   FAR   NONE");
+
+
+//lcdPrint(uart1, 1, "Auton Routine");
+//lcdPrint(uart1, 2, "NEAR       FAR       NONE");
+
+unsigned int btnsPressed = lcdReadButtons(uart2);
+
+  if(btnsPressed & 0x1) {
+    routine = near;
+    lcdClear(uart2);
+    lcdPrint(uart2, 1, "left pressed");
+  } else if (btnsPressed & 0x2) {
+    routine = far;
+    lcdClear(uart2);
+    lcdPrint(uart2, 1, "middle pressed");
+  } else if (btnsPressed & 0x4) {
+    routine = none;
+    lcdClear(uart2);
+    lcdPrint(uart2, 1, "right pressed");
+  }
+
+
+  lcdShutdown(uart2);
+
+
+  //lcdSetBacklight(uart2, false);*/
+
+
+
+
 }

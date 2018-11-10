@@ -20,22 +20,39 @@
  **/
 #define IME_NUMBER 4
 
-<<<<<<< HEAD
+/**
+   * @brief defines the distance the robot needs to drive in encoder ticks
+   * @author Michael Baraty
+   * @date 11/10/2018
+  */
 #define ENCODER_TILE (392 / 4 * 3.14 * 12)
-=======
-#define COUNTS_PER_ROTATION 392
 
-#define WHEEL_DIAMETER_INCHES 4
-
-#define ENCODER_INCH (COUNTS_PER_ROTATION / WHEEL_DIAMETER_INCHES * M_PI)
->>>>>>> parent of f0a4a14... Auton Work
-
+/**
+  * @brief defines the front left IME in the order
+  * @author Michael Baraty
+  * @date 11/10/2018
+  */
 #define IME_FRONT_LEFT 1
 
+/**
+  * @brief defines the front right IME in the order
+  * @author Michael Baraty
+  * @date 11/10/2018
+  */
 #define IME_FRONT_RIGHT 2
 
+/**
+  * @brief defines the back left IME in the order
+  * @author Michael Baraty
+  * @date 11/10/2018
+  */
 #define IME_BACK_LEFT 0
 
+/**
+  * @brief defines the back right IME in the order
+  * @author Michael Baraty
+  * @date 11/10/2018
+  */
 #define IME_BACK_RIGHT 3
 
 /**
@@ -86,7 +103,4 @@ int imeGetAverageTicks();
  **/
 void imeResetAll();
 
-/*void driveDistance(int distance, int speed, void (*functionPtr)(int),
-                           void (*start_function)(void *));
-*/
 #endif

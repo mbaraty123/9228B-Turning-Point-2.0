@@ -1,20 +1,15 @@
 #include "drive.h"
 
+
+ static bool firingSpeed = false;
+ static bool firingMode = false;
+
 void robotStop() {
   motorSet(MOTOR_BACK_LEFT, 0);
   motorSet(MOTOR_BACK_RIGHT, 0);
   motorSet(MOTOR_FRONT_RIGHT, 0);
   motorSet(MOTOR_FRONT_LEFT, 0);
 }
-
-/*void robotDriveForward(int speed, double time) {
-  motorSet(MOTOR_BACK_LEFT, MAX_SPEED);
-  motorSet(MOTOR_BACK_RIGHT, MAX_SPEED);
-  motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED);
-  motorSet(MOTOR_FRONT_LEFT, MAX_SPEED);
-  wait(time * 1000);
-  robotStop();
-}*/
 
 void flywheelSet(int speed) {
   motorSet(MOTOR_FLYWHEEL_A, -speed);
@@ -50,13 +45,10 @@ void drive() {
   int stickLY = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_Y);
   int stickRX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_RIGHT_X);
 
-  motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX));
-  motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX));
-  motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX));
-  motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX));
-
-  bool firingMode = false;
-  bool firingSpeed = false;
+  motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX) * .99);
+  motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX) * .99);
+  motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX) * .99);
+  motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX) * .99);
 
   if(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_UP)) {
     intakeSet(forward);
@@ -87,9 +79,9 @@ void drive() {
     flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3 >= 1? motorGet(MOTOR_FLYWHEEL_A) / 3: 0);
   }
 
-  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)) {
+/*  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)) {
     robotStraighten();
-  }
+  }*/
 
   if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_UP)) {
     flipperMove(up);

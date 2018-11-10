@@ -12,9 +12,17 @@
 
 /**
  * @brief Port the Gyroscope plugs into.
+ * @author Michael Baraty
+ * @date 11/10/2018
  */
 #define GYRO_PORT 1
 
+/**
+  * @brief returns the main gyroscope reading
+  * @return gyro direction
+  * @author Michael Baraty
+  * @date 11/10/2018
+  */
 int gyroGetA();
 
 /**

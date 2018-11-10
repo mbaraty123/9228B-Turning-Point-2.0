@@ -11,6 +11,8 @@
  */
 
 #include <main.h>
+#include "drive.h"
+#include "auton.h"
 
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
@@ -27,9 +29,48 @@
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
 void autonomous() {
-<<<<<<< HEAD
+
+  routine = near;
+
+  if(routine == near) {
+    nearRoutine();
+  } else if(routine == far) {
+    farRoutine();
+  }
 
 
-=======
->>>>>>> parent of f0a4a14... Auton Work
 }
+
+void nearRoutine() {
+  //fire up the flywheels
+  flywheelSet(70);
+  taskDelay(4000);
+  intakeSet(forward);
+  taskDelay(1800);
+  motorStopAll();
+
+  //drive for bottom flag
+  motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2 + 30);
+  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+  taskDelay(2000);
+  robotStop();
+  taskDelay(500);
+
+  //prepare for tele-op
+  motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+  taskDelay(1500);
+  robotStop();
+}
+
+void farRoutine() {
+  flywheelSet(120);
+  taskDelay(4000);
+  intakeSet(forward);
+  taskDelay(1800);
+  motorStopAll();
+  }

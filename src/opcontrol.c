@@ -36,7 +36,6 @@ void operatorControl() {
 	while (1) {
 
 		drive();
-		//printFlipper();
 
 		delay(20);
 	}
