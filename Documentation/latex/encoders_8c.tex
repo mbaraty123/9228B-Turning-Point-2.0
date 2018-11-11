@@ -1,0 +1,164 @@
+\section{src/encoders.c File Reference}
+\label{encoders_8c}\index{src/encoders.\+c@{src/encoders.\+c}}
+{\ttfamily \#include \char`\"{}encoders.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \textbf{ ime\+Init} ()
+\begin{DoxyCompactList}\small\item\em Initializes all motor encoders. \end{DoxyCompactList}\item 
+int \textbf{ ime\+Get\+Ticks} (const unsigned char address)
+\begin{DoxyCompactList}\small\item\em Gets the encoder ticks since last reset. \end{DoxyCompactList}\item 
+int \textbf{ ime\+Get\+VelocityA} (const unsigned char address)
+\begin{DoxyCompactList}\small\item\em Gets the encoder velocity. \end{DoxyCompactList}\item 
+void \textbf{ ime\+Move\+For} (int ticks, \textbf{ Direction} dir)
+\begin{DoxyCompactList}\small\item\em moves at a given velocity for a certain number of ticks \end{DoxyCompactList}\item 
+int \textbf{ ime\+Get\+Average\+Ticks} ()
+\begin{DoxyCompactList}\small\item\em Gets the average encoder ticks since the last reset. \end{DoxyCompactList}\item 
+void \textbf{ ime\+Reset\+All} ()
+\begin{DoxyCompactList}\small\item\em Resets all the encoders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{encoders_8c_aba3e36b7bcb4b500371fde21f8b2b41f}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Get\+Average\+Ticks@{ime\+Get\+Average\+Ticks}}
+\index{ime\+Get\+Average\+Ticks@{ime\+Get\+Average\+Ticks}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Get\+Average\+Ticks()}
+{\footnotesize\ttfamily int ime\+Get\+Average\+Ticks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the average encoder ticks since the last reset. 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/8/2018 
+\end{DoxyDate}
+
+
+Definition at line 48 of file encoders.\+c.
+
+\mbox{\label{encoders_8c_a84ffdffa696500993667c3d3ffc98289}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Get\+Ticks@{ime\+Get\+Ticks}}
+\index{ime\+Get\+Ticks@{ime\+Get\+Ticks}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Get\+Ticks()}
+{\footnotesize\ttfamily int ime\+Get\+Ticks (\begin{DoxyParamCaption}\item[{const unsigned char}]{address }\end{DoxyParamCaption})}
+
+
+
+Gets the encoder ticks since last reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/25/2018 
+\end{DoxyDate}
+
+
+Definition at line 21 of file encoders.\+c.
+
+\mbox{\label{encoders_8c_acadd8704f27af8344c7ce939d52d41d6}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Get\+VelocityA@{ime\+Get\+VelocityA}}
+\index{ime\+Get\+VelocityA@{ime\+Get\+VelocityA}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Get\+Velocity\+A()}
+{\footnotesize\ttfamily int ime\+Get\+VelocityA (\begin{DoxyParamCaption}\item[{const unsigned char}]{address }\end{DoxyParamCaption})}
+
+
+
+Gets the encoder velocity. 
+
+\begin{DoxyReturn}{Returns}
+velocity 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/8/2018 
+\end{DoxyDate}
+
+
+Definition at line 27 of file encoders.\+c.
+
+\mbox{\label{encoders_8c_ad57fc9dd5934390e643e323d149fe936}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Init@{ime\+Init}}
+\index{ime\+Init@{ime\+Init}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Init()}
+{\footnotesize\ttfamily bool ime\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes all motor encoders. 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/25/2018 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\doxyref{I\+M\+E\+\_\+\+N\+U\+M\+B\+ER}{p.}{encoders_8h_a87db35d2735ef045f57d446b3bfe8d48} 
+\end{DoxySeeAlso}
+
+
+Definition at line 3 of file encoders.\+c.
+
+\mbox{\label{encoders_8c_ad13a69ba8beab2e1f0635792f403b61d}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Move\+For@{ime\+Move\+For}}
+\index{ime\+Move\+For@{ime\+Move\+For}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Move\+For()}
+{\footnotesize\ttfamily void ime\+Move\+For (\begin{DoxyParamCaption}\item[{int}]{ticks,  }\item[{\textbf{ Direction}}]{dir }\end{DoxyParamCaption})}
+
+
+
+moves at a given velocity for a certain number of ticks 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticks} & \\
+\hline
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/8/2018 
+\end{DoxyDate}
+
+
+Definition at line 33 of file encoders.\+c.
+
+\mbox{\label{encoders_8c_a4efeb3ceeceee0ac73397deee729f6bc}} 
+\index{encoders.\+c@{encoders.\+c}!ime\+Reset\+All@{ime\+Reset\+All}}
+\index{ime\+Reset\+All@{ime\+Reset\+All}!encoders.\+c@{encoders.\+c}}
+\subsubsection{ime\+Reset\+All()}
+{\footnotesize\ttfamily void ime\+Reset\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets all the encoders. 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/8/2018 
+\end{DoxyDate}
+
+
+Definition at line 53 of file encoders.\+c.
+

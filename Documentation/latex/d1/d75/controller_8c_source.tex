@@ -1,0 +1,13 @@
+\subsection{controller.\+c}
+\label{controller_8c_source}\index{src/controller.\+c@{src/controller.\+c}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "controller.h"}
+00002 \textcolor{preprocessor}{#include "API.h"}
+00003 \textcolor{preprocessor}{#include "drive.h"}
+00004 
+00005 \textcolor{keywordtype}{int} joystickGetAnalogA(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} joystick, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} channel) \{
+00006   \textcolor{keywordflow}{return} abs(joystickGetAnalog(joystick, channel)) > THRESHOLD? 
+      joystickGetAnalog(joystick, channel): 0;
+00007 \}
+\end{DoxyCode}

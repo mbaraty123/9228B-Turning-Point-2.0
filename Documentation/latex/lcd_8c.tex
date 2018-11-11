@@ -1,0 +1,175 @@
+\section{src/lcd.c File Reference}
+\label{lcd_8c}\index{src/lcd.\+c@{src/lcd.\+c}}
+{\ttfamily \#include \char`\"{}lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}A\+P\+I.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ lcd\+\_\+buttons} \textbf{ lcd\+\_\+get\+\_\+pressed\+\_\+buttons} ()
+\begin{DoxyCompactList}\small\item\em Returns the pressed buttons. \end{DoxyCompactList}\item 
+void \textbf{ lcd\+\_\+clear} ()
+\begin{DoxyCompactList}\small\item\em Clears the lcd. \end{DoxyCompactList}\item 
+void \textbf{ init\+\_\+main\+\_\+lcd} (\textbf{ F\+I\+LE} $\ast$lcd)
+\begin{DoxyCompactList}\small\item\em Initializes the lcd screen. Also will initialize the lcd\+\_\+port var. Must be called before any lcd function can be called. \end{DoxyCompactList}\item 
+void \textbf{ lcd\+\_\+print} (const unsigned int \textbf{ line}, const char $\ast$str)
+\begin{DoxyCompactList}\small\item\em prints a string to a line on the lcd \end{DoxyCompactList}\item 
+void \textbf{ lcd\+\_\+set\+\_\+backlight} (const bool state)
+\begin{DoxyCompactList}\small\item\em sets the backlight of the lcd \end{DoxyCompactList}\item 
+void \textbf{ promt\+\_\+confirmation} (const char $\ast$confirm\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Prompts the user to confirm a string. User must press middle button to confirm. Function is not thread safe and will stall a thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\label{lcd_8c_a93b26f37d6b1687ad54c90feedfd29ca}} 
+\index{lcd.\+c@{lcd.\+c}!init\+\_\+main\+\_\+lcd@{init\+\_\+main\+\_\+lcd}}
+\index{init\+\_\+main\+\_\+lcd@{init\+\_\+main\+\_\+lcd}!lcd.\+c@{lcd.\+c}}
+\subsubsection{init\+\_\+main\+\_\+lcd()}
+{\footnotesize\ttfamily void init\+\_\+main\+\_\+lcd (\begin{DoxyParamCaption}\item[{\textbf{ F\+I\+LE} $\ast$}]{lcd }\end{DoxyParamCaption})}
+
+
+
+Initializes the lcd screen. Also will initialize the lcd\+\_\+port var. Must be called before any lcd function can be called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lcd} & the urart port of the lcd screen \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{uart1}{p.}{_a_p_i_8h_ad94ac6d5e345a1f794174d9bb7c6f69c} 
+
+\doxyref{uart2}{p.}{_a_p_i_8h_a001e6f2f6c87e1e2bcff741ab586024e} 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+
+
+Definition at line 33 of file lcd.\+c.
+
+\mbox{\label{lcd_8c_a35c08b1fa742e650f4873939707b893b}} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+clear@{lcd\+\_\+clear}}
+\index{lcd\+\_\+clear@{lcd\+\_\+clear}!lcd.\+c@{lcd.\+c}}
+\subsubsection{lcd\+\_\+clear()}
+{\footnotesize\ttfamily void lcd\+\_\+clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the lcd. 
+
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+
+
+Definition at line 28 of file lcd.\+c.
+
+\mbox{\label{lcd_8c_ac7b3225ccc82fcbe067ba9da934f010d}} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+get\+\_\+pressed\+\_\+buttons@{lcd\+\_\+get\+\_\+pressed\+\_\+buttons}}
+\index{lcd\+\_\+get\+\_\+pressed\+\_\+buttons@{lcd\+\_\+get\+\_\+pressed\+\_\+buttons}!lcd.\+c@{lcd.\+c}}
+\subsubsection{lcd\+\_\+get\+\_\+pressed\+\_\+buttons()}
+{\footnotesize\ttfamily \textbf{ lcd\+\_\+buttons} lcd\+\_\+get\+\_\+pressed\+\_\+buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the pressed buttons. 
+
+\begin{DoxyReturn}{Returns}
+a struct containing the states of all three buttons. 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\doxyref{lcd\+\_\+buttons}{p.}{structlcd__buttons} 
+\end{DoxySeeAlso}
+
+
+Definition at line 14 of file lcd.\+c.
+
+\mbox{\label{lcd_8c_a56f1157b5adbf39163e78ddb0c78693b}} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+print@{lcd\+\_\+print}}
+\index{lcd\+\_\+print@{lcd\+\_\+print}!lcd.\+c@{lcd.\+c}}
+\subsubsection{lcd\+\_\+print()}
+{\footnotesize\ttfamily void lcd\+\_\+print (\begin{DoxyParamCaption}\item[{unsigned int}]{line,  }\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+prints a string to a line on the lcd 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & the line to print on \\
+\hline
+{\em str} & string to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+
+
+Definition at line 39 of file lcd.\+c.
+
+\mbox{\label{lcd_8c_afbeb977012964bc8684a240baf3e0782}} 
+\index{lcd.\+c@{lcd.\+c}!lcd\+\_\+set\+\_\+backlight@{lcd\+\_\+set\+\_\+backlight}}
+\index{lcd\+\_\+set\+\_\+backlight@{lcd\+\_\+set\+\_\+backlight}!lcd.\+c@{lcd.\+c}}
+\subsubsection{lcd\+\_\+set\+\_\+backlight()}
+{\footnotesize\ttfamily void lcd\+\_\+set\+\_\+backlight (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+
+
+sets the backlight of the lcd 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & a boolean representing the state of the backlight. true = on, false = off. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+
+
+Definition at line 44 of file lcd.\+c.
+
+\mbox{\label{lcd_8c_a99f4683e1990edf624ab216bf327cba4}} 
+\index{lcd.\+c@{lcd.\+c}!promt\+\_\+confirmation@{promt\+\_\+confirmation}}
+\index{promt\+\_\+confirmation@{promt\+\_\+confirmation}!lcd.\+c@{lcd.\+c}}
+\subsubsection{promt\+\_\+confirmation()}
+{\footnotesize\ttfamily void promt\+\_\+confirmation (\begin{DoxyParamCaption}\item[{const char $\ast$}]{confirm\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+Prompts the user to confirm a string. User must press middle button to confirm. Function is not thread safe and will stall a thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em confirm\+\_\+text} & the text for the user to confirm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Chris Jerrett 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9/9/2017 
+\end{DoxyDate}
+
+
+Definition at line 49 of file lcd.\+c.
+

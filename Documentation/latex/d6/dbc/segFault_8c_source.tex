@@ -1,0 +1,15 @@
+\subsection{seg\+Fault.\+c}
+\label{segFault_8c_source}\index{src/seg\+Fault.\+c@{src/seg\+Fault.\+c}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "main.h"}
+00002 \textcolor{preprocessor}{#include <sys/types.h>}
+00003 \textcolor{preprocessor}{#include <unistd.h>}
+00004 \textcolor{preprocessor}{#include <signal.h>}
+00005 
+00006 
+00007 \textcolor{keywordtype}{void} sighandler(\textcolor{keywordtype}{int} signum) \{
+00008   printf(\textcolor{stringliteral}{"Process %d got signal %d\(\backslash\)n"}, getpid(), signum);
+00009   \textcolor{keywordflow}{while}(1) delay(1000);
+00010 \}
+\end{DoxyCode}

@@ -1,0 +1,19 @@
+\subsection{potentiometer.\+c}
+\label{potentiometer_8c_source}\index{src/potentiometer.\+c@{src/potentiometer.\+c}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "potentiometer.h"}
+00002 
+00003 \textcolor{keywordtype}{void} potentiometerInit() \{
+00004   analogCalibrate(POTENTIOMETER\_FLIPPER);
+00005 \}
+00006 
+00007 
+00008 \textcolor{keywordtype}{int} flipperPosition() \{
+00009   \textcolor{keywordflow}{return} analogReadCalibrated(POTENTIOMETER\_FLIPPER);
+00010 \}
+00011 
+00012 \textcolor{keywordtype}{void} printFlipper() \{
+00013   printf(\textcolor{stringliteral}{"%d\(\backslash\)n"}, flipperPosition());
+00014 \}
+\end{DoxyCode}

@@ -1,0 +1,29 @@
+\subsection{gyro.\+c}
+\label{gyro_8c_source}\index{src/gyro.\+c@{src/gyro.\+c}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "gyro.h"}
+00002 
+00003 \textcolor{keyword}{static} Gyro main\_gyro;
+00004 
+00005 \textcolor{keywordtype}{bool} init_main_gyro() \{
+00006   main\_gyro = gyroInit(GYRO_PORT, GYRO_MULTIPLIER);
+00007   \textcolor{keywordflow}{return} main\_gyro != NULL;
+00008 \}
+00009 
+00010 \textcolor{keywordtype}{int} gyroGetA() \{
+00011   \textcolor{keywordflow}{return} gyroGet(main\_gyro);
+00012 \}
+00013 
+00014 \textcolor{keywordtype}{void} gyroTurn(\textcolor{keywordtype}{int} degree) \{
+00015   \textcolor{keywordflow}{if}(gyroGetA() >= abs(degree - 180)) \{
+00016     \textcolor{keywordflow}{while}(gyroGetA() != degree) \{
+00017       robotSpin(counterclockwise, 70);
+00018     \}
+00019   \} \textcolor{keywordflow}{else} \{
+00020     \textcolor{keywordflow}{while}(gyroGetA() != degree) \{
+00021       robotSpin(clockwise, 70);
+00022     \}
+00023   \}
+00024 \}
+\end{DoxyCode}

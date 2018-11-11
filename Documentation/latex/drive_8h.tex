@@ -1,0 +1,467 @@
+\section{include/drive.h File Reference}
+\label{drive_8h}\index{include/drive.\+h@{include/drive.\+h}}
+
+
+Basic drive definitions and functions.  
+
+
+{\ttfamily \#include $<$A\+P\+I.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}motor\+\_\+ports.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}controller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gyro.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ T\+H\+R\+E\+S\+H\+O\+LD}~20
+\begin{DoxyCompactList}\small\item\em defines the minimum reading from the joysticks to avoid underpowering the motors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Direction} \{ \textbf{ forward}, 
+\textbf{ reverse}, 
+\textbf{ clockwise}, 
+\textbf{ counterclockwise}
+ \}
+\begin{DoxyCompactList}\small\item\em defines the directions in which the drive base can be moving \end{DoxyCompactList}\item 
+enum \textbf{ Flipper\+Direction} \{ \textbf{ up}, 
+\textbf{ down}
+ \}
+\begin{DoxyCompactList}\small\item\em defines the directions in which the intake mechanism can move \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ motor\+Speed\+Stick} (unsigned char channel, int speed)
+\begin{DoxyCompactList}\small\item\em sets the speed of the motors according to a joystick taking into account the threshold \end{DoxyCompactList}\item 
+void \textbf{ robot\+Stop} ()
+\begin{DoxyCompactList}\small\item\em stops the robot drivebase \end{DoxyCompactList}\item 
+void \textbf{ flywheel\+Set} (int speed)
+\begin{DoxyCompactList}\small\item\em sets the speed for the flywheel \end{DoxyCompactList}\item 
+void \textbf{ flywheel\+Stop} ()
+\begin{DoxyCompactList}\small\item\em stops the flywheel \end{DoxyCompactList}\item 
+void \textbf{ intake\+Set} (\textbf{ Direction} dir)
+\begin{DoxyCompactList}\small\item\em activates the intake mechanism at a certain speed \end{DoxyCompactList}\item 
+void \textbf{ intake\+Stop} ()
+\begin{DoxyCompactList}\small\item\em disables the intake mechanism \end{DoxyCompactList}\item 
+void \textbf{ drive} ()
+\begin{DoxyCompactList}\small\item\em drives the robot \end{DoxyCompactList}\item 
+void \textbf{ robot\+Spin} (\textbf{ Direction} dir, int speed)
+\begin{DoxyCompactList}\small\item\em spins the robot in a given direction at a given speed \end{DoxyCompactList}\item 
+void \textbf{ robot\+Straighten} ()
+\begin{DoxyCompactList}\small\item\em straightens the robot to face the starting direction \end{DoxyCompactList}\item 
+void \textbf{ robot\+Drive\+Forward} ()
+\begin{DoxyCompactList}\small\item\em drives the robot forward at half speed \end{DoxyCompactList}\item 
+void \textbf{ robot\+Drive\+Straight} (\textbf{ Direction} dir)
+\begin{DoxyCompactList}\small\item\em drives the robot straight in a given direction \end{DoxyCompactList}\item 
+void \textbf{ robot\+Drive\+Reverse} ()
+\begin{DoxyCompactList}\small\item\em drives the robot backwards at half speed \end{DoxyCompactList}\item 
+void \textbf{ flipper\+Move} (\textbf{ Flipper\+Direction} dir)
+\begin{DoxyCompactList}\small\item\em moves the flipper in a certain direction \end{DoxyCompactList}\item 
+void \textbf{ flipper\+Stop} ()
+\begin{DoxyCompactList}\small\item\em stops the cap flipper \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic drive definitions and functions. 
+
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\label{drive_8h_a4679d8ea8690999a6c6c7c0cb245c879}} 
+\index{drive.\+h@{drive.\+h}!T\+H\+R\+E\+S\+H\+O\+LD@{T\+H\+R\+E\+S\+H\+O\+LD}}
+\index{T\+H\+R\+E\+S\+H\+O\+LD@{T\+H\+R\+E\+S\+H\+O\+LD}!drive.\+h@{drive.\+h}}
+\subsubsection{T\+H\+R\+E\+S\+H\+O\+LD}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+S\+H\+O\+LD~20}
+
+
+
+defines the minimum reading from the joysticks to avoid underpowering the motors 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/25/2018 
+\end{DoxyDate}
+
+
+Definition at line 42 of file drive.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\label{drive_8h_a224b9163917ac32fc95a60d8c1eec3aa}} 
+\index{drive.\+h@{drive.\+h}!Direction@{Direction}}
+\index{Direction@{Direction}!drive.\+h@{drive.\+h}}
+\subsubsection{Direction}
+{\footnotesize\ttfamily enum \textbf{ Direction}}
+
+
+
+defines the directions in which the drive base can be moving 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/31/2018 
+\end{DoxyDate}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{forward@{forward}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!forward@{forward}}}\mbox{\label{drive_8h_a224b9163917ac32fc95a60d8c1eec3aaa726a0af5164861adac8c015a742dcf21}} 
+forward&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{reverse@{reverse}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!reverse@{reverse}}}\mbox{\label{drive_8h_a224b9163917ac32fc95a60d8c1eec3aaa5a40f8ecbed801e00fddb306fc5666f0}} 
+reverse&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{clockwise@{clockwise}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!clockwise@{clockwise}}}\mbox{\label{drive_8h_a224b9163917ac32fc95a60d8c1eec3aaac3ef8d29df737c0d8cdb803b1e5c839a}} 
+clockwise&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{counterclockwise@{counterclockwise}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!counterclockwise@{counterclockwise}}}\mbox{\label{drive_8h_a224b9163917ac32fc95a60d8c1eec3aaa7edb41bb0a4cf6a97c97434f3126c268}} 
+counterclockwise&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 20 of file drive.\+h.
+
+\mbox{\label{drive_8h_a2f0911ee5d810257dbf1bdb35da96fbc}} 
+\index{drive.\+h@{drive.\+h}!Flipper\+Direction@{Flipper\+Direction}}
+\index{Flipper\+Direction@{Flipper\+Direction}!drive.\+h@{drive.\+h}}
+\subsubsection{Flipper\+Direction}
+{\footnotesize\ttfamily enum \textbf{ Flipper\+Direction}}
+
+
+
+defines the directions in which the intake mechanism can move 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{up@{up}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!up@{up}}}\mbox{\label{drive_8h_a2f0911ee5d810257dbf1bdb35da96fbcaebc281bf093563220c2270ba57dedfce}} 
+up&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{down@{down}!drive.\+h@{drive.\+h}}\index{drive.\+h@{drive.\+h}!down@{down}}}\mbox{\label{drive_8h_a2f0911ee5d810257dbf1bdb35da96fbca00156fc42b17a87d0746d97b42caf296}} 
+down&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 32 of file drive.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{drive_8h_a928e32686c7e00c1ecde24c3da3019f7}} 
+\index{drive.\+h@{drive.\+h}!drive@{drive}}
+\index{drive@{drive}!drive.\+h@{drive.\+h}}
+\subsubsection{drive()}
+{\footnotesize\ttfamily void drive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+drives the robot 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/26/2018 
+\end{DoxyDate}
+
+
+Definition at line 41 of file drive.\+c.
+
+\mbox{\label{drive_8h_a8fb87ee769c5cb856ac57381622779b0}} 
+\index{drive.\+h@{drive.\+h}!flipper\+Move@{flipper\+Move}}
+\index{flipper\+Move@{flipper\+Move}!drive.\+h@{drive.\+h}}
+\subsubsection{flipper\+Move()}
+{\footnotesize\ttfamily void flipper\+Move (\begin{DoxyParamCaption}\item[{\textbf{ Flipper\+Direction}}]{dir }\end{DoxyParamCaption})}
+
+
+
+moves the flipper in a certain direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 140 of file drive.\+c.
+
+\mbox{\label{drive_8h_ad2b33937a785dc4201bcae5b6ed66b9f}} 
+\index{drive.\+h@{drive.\+h}!flipper\+Stop@{flipper\+Stop}}
+\index{flipper\+Stop@{flipper\+Stop}!drive.\+h@{drive.\+h}}
+\subsubsection{flipper\+Stop()}
+{\footnotesize\ttfamily void flipper\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stops the cap flipper 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+
+
+Definition at line 148 of file drive.\+c.
+
+\mbox{\label{drive_8h_a60e483906879d9558762282b5d5b581b}} 
+\index{drive.\+h@{drive.\+h}!flywheel\+Set@{flywheel\+Set}}
+\index{flywheel\+Set@{flywheel\+Set}!drive.\+h@{drive.\+h}}
+\subsubsection{flywheel\+Set()}
+{\footnotesize\ttfamily void flywheel\+Set (\begin{DoxyParamCaption}\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+sets the speed for the flywheel 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/26/2018 
+\end{DoxyDate}
+
+
+Definition at line 14 of file drive.\+c.
+
+\mbox{\label{drive_8h_a6889fbcc0c9811401a9339e1bafbf467}} 
+\index{drive.\+h@{drive.\+h}!flywheel\+Stop@{flywheel\+Stop}}
+\index{flywheel\+Stop@{flywheel\+Stop}!drive.\+h@{drive.\+h}}
+\subsubsection{flywheel\+Stop()}
+{\footnotesize\ttfamily void flywheel\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stops the flywheel 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/26/2018 
+\end{DoxyDate}
+
+
+Definition at line 19 of file drive.\+c.
+
+\mbox{\label{drive_8h_a80d5e8b6ad5f4ebc5e22d2c179537aa8}} 
+\index{drive.\+h@{drive.\+h}!intake\+Set@{intake\+Set}}
+\index{intake\+Set@{intake\+Set}!drive.\+h@{drive.\+h}}
+\subsubsection{intake\+Set()}
+{\footnotesize\ttfamily void intake\+Set (\begin{DoxyParamCaption}\item[{\textbf{ Direction}}]{dir }\end{DoxyParamCaption})}
+
+
+
+activates the intake mechanism at a certain speed 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/31/2018 
+\end{DoxyDate}
+
+
+Definition at line 23 of file drive.\+c.
+
+\mbox{\label{drive_8h_a62c5f4e08161e15214b78686e675aabb}} 
+\index{drive.\+h@{drive.\+h}!intake\+Stop@{intake\+Stop}}
+\index{intake\+Stop@{intake\+Stop}!drive.\+h@{drive.\+h}}
+\subsubsection{intake\+Stop()}
+{\footnotesize\ttfamily void intake\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+disables the intake mechanism 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/26/2018 
+\end{DoxyDate}
+
+
+Definition at line 36 of file drive.\+c.
+
+\mbox{\label{drive_8h_abccc286b38b665e7171bee0b5a2c2834}} 
+\index{drive.\+h@{drive.\+h}!motor\+Speed\+Stick@{motor\+Speed\+Stick}}
+\index{motor\+Speed\+Stick@{motor\+Speed\+Stick}!drive.\+h@{drive.\+h}}
+\subsubsection{motor\+Speed\+Stick()}
+{\footnotesize\ttfamily void motor\+Speed\+Stick (\begin{DoxyParamCaption}\item[{unsigned char}]{channel,  }\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+sets the speed of the motors according to a joystick taking into account the threshold 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & \\
+\hline
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/25/2018 
+\end{DoxyDate}
+\mbox{\label{drive_8h_af9b0c744a3f92085b9e6d2c9a3341492}} 
+\index{drive.\+h@{drive.\+h}!robot\+Drive\+Forward@{robot\+Drive\+Forward}}
+\index{robot\+Drive\+Forward@{robot\+Drive\+Forward}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Drive\+Forward()}
+{\footnotesize\ttfamily void robot\+Drive\+Forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+drives the robot forward at half speed 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 116 of file drive.\+c.
+
+\mbox{\label{drive_8h_a151c59da152a110b01311c4f893afd3b}} 
+\index{drive.\+h@{drive.\+h}!robot\+Drive\+Reverse@{robot\+Drive\+Reverse}}
+\index{robot\+Drive\+Reverse@{robot\+Drive\+Reverse}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Drive\+Reverse()}
+{\footnotesize\ttfamily void robot\+Drive\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+drives the robot backwards at half speed 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 123 of file drive.\+c.
+
+\mbox{\label{drive_8h_a014c2a00d938c4e3c8aa626ac60e2765}} 
+\index{drive.\+h@{drive.\+h}!robot\+Drive\+Straight@{robot\+Drive\+Straight}}
+\index{robot\+Drive\+Straight@{robot\+Drive\+Straight}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Drive\+Straight()}
+{\footnotesize\ttfamily void robot\+Drive\+Straight (\begin{DoxyParamCaption}\item[{\textbf{ Direction}}]{dir }\end{DoxyParamCaption})}
+
+
+
+drives the robot straight in a given direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 130 of file drive.\+c.
+
+\mbox{\label{drive_8h_ab8d8bae0e22ee3c8d2f3150295e5faba}} 
+\index{drive.\+h@{drive.\+h}!robot\+Spin@{robot\+Spin}}
+\index{robot\+Spin@{robot\+Spin}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Spin()}
+{\footnotesize\ttfamily void robot\+Spin (\begin{DoxyParamCaption}\item[{\textbf{ Direction}}]{dir,  }\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+spins the robot in a given direction at a given speed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & \\
+\hline
+{\em speed} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 96 of file drive.\+c.
+
+\mbox{\label{drive_8h_a69f6d219d1eedd14cd191b0b201796df}} 
+\index{drive.\+h@{drive.\+h}!robot\+Stop@{robot\+Stop}}
+\index{robot\+Stop@{robot\+Stop}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Stop()}
+{\footnotesize\ttfamily void robot\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stops the robot drivebase 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/26/2018 
+\end{DoxyDate}
+
+
+Definition at line 7 of file drive.\+c.
+
+\mbox{\label{drive_8h_a53fb069f33735f517bdff54c69b8e860}} 
+\index{drive.\+h@{drive.\+h}!robot\+Straighten@{robot\+Straighten}}
+\index{robot\+Straighten@{robot\+Straighten}!drive.\+h@{drive.\+h}}
+\subsubsection{robot\+Straighten()}
+{\footnotesize\ttfamily void robot\+Straighten (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+straightens the robot to face the starting direction 
+
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11/6/2018 
+\end{DoxyDate}
+
+
+Definition at line 112 of file drive.\+c.
+

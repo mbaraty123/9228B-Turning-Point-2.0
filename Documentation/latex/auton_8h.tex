@@ -1,0 +1,114 @@
+\section{include/auton.h File Reference}
+\label{auton_8h}\index{include/auton.\+h@{include/auton.\+h}}
+
+
+Defines different pieces and functions for the autonomous.  
+
+
+{\ttfamily \#include \char`\"{}A\+P\+I.\+h\char`\"{}}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Auton\+Routine} \{ \textbf{ far} = 0, 
+\textbf{ near} = 1, 
+\textbf{ none} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em defines the different possible autonomous routines \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ near\+Routine} ()
+\begin{DoxyCompactList}\small\item\em begins the autonomous routine from the square nearest to the flag \end{DoxyCompactList}\item 
+void \textbf{ far\+Routine} ()
+\begin{DoxyCompactList}\small\item\em begins the autonomous routine from the square farthest from the flag \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines different pieces and functions for the autonomous. 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\label{auton_8h_a1730ff50964147a555aa689ea5a64aaf}} 
+\index{auton.\+h@{auton.\+h}!Auton\+Routine@{Auton\+Routine}}
+\index{Auton\+Routine@{Auton\+Routine}!auton.\+h@{auton.\+h}}
+\subsubsection{Auton\+Routine}
+{\footnotesize\ttfamily enum \textbf{ Auton\+Routine}}
+
+
+
+defines the different possible autonomous routines 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{far@{far}!auton.\+h@{auton.\+h}}\index{auton.\+h@{auton.\+h}!far@{far}}}\mbox{\label{auton_8h_a1730ff50964147a555aa689ea5a64aafac04257290d2f2f52424c13268ec7b773}} 
+far&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{near@{near}!auton.\+h@{auton.\+h}}\index{auton.\+h@{auton.\+h}!near@{near}}}\mbox{\label{auton_8h_a1730ff50964147a555aa689ea5a64aafaa561eeebc9488538d08740c97d40fba6}} 
+near&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{none@{none}!auton.\+h@{auton.\+h}}\index{auton.\+h@{auton.\+h}!none@{none}}}\mbox{\label{auton_8h_a1730ff50964147a555aa689ea5a64aafab7e4e0120a041dbe6528b050c04269e0}} 
+none&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 18 of file auton.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\label{auton_8h_a03a34944509a90384c5e0d7494c762ce}} 
+\index{auton.\+h@{auton.\+h}!far\+Routine@{far\+Routine}}
+\index{far\+Routine@{far\+Routine}!auton.\+h@{auton.\+h}}
+\subsubsection{far\+Routine()}
+{\footnotesize\ttfamily void far\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+begins the autonomous routine from the square farthest from the flag 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition at line 70 of file auto.\+c.
+
+\mbox{\label{auton_8h_a91e751e72f029bd76a19bb6e40d570ce}} 
+\index{auton.\+h@{auton.\+h}!near\+Routine@{near\+Routine}}
+\index{near\+Routine@{near\+Routine}!auton.\+h@{auton.\+h}}
+\subsubsection{near\+Routine()}
+{\footnotesize\ttfamily void near\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+begins the autonomous routine from the square nearest to the flag 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition at line 44 of file auto.\+c.
+

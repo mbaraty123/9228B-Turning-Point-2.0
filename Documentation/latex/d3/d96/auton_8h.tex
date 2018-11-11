@@ -1,0 +1,158 @@
+\subsection{include/auton.h File Reference}
+\label{auton_8h}\index{include/auton.\+h@{include/auton.\+h}}
+
+
+Defines different pieces and functions for the autonomous.  
+
+
+{\ttfamily \#include \char`\"{}A\+P\+I.\+h\char`\"{}}\newline
+\subsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \textbf{ Auton\+Routine} \{ {\bfseries far} = 0, 
+{\bfseries near} = 1, 
+{\bfseries none} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em defines the different possible autonomous routines \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ near\+Routine} ()
+\begin{DoxyCompactList}\small\item\em begins the autonomous routine from the square nearest to the flag \end{DoxyCompactList}\item 
+void \textbf{ far\+Routine} ()
+\begin{DoxyCompactList}\small\item\em begins the autonomous routine from the square farthest from the flag \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Defines different pieces and functions for the autonomous. 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition in file \textbf{ auton.\+h}.
+
+
+
+\subsubsection{Enumeration Type Documentation}
+\mbox{\label{auton_8h_a1730ff50964147a555aa689ea5a64aaf}} 
+\index{auton.\+h@{auton.\+h}!Auton\+Routine@{Auton\+Routine}}
+\index{Auton\+Routine@{Auton\+Routine}!auton.\+h@{auton.\+h}}
+\paragraph{Auton\+Routine}
+{\footnotesize\ttfamily enum \textbf{ Auton\+Routine}}
+
+
+
+defines the different possible autonomous routines 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition at line \textbf{ 18} of file \textbf{ auton.\+h}.
+
+
+\begin{DoxyCode}
+00018              \{
+00019   far = 0,
+00020   near = 1,
+00021   none = 2
+00022 \} AutonRoutine;
+\end{DoxyCode}
+
+
+\subsubsection{Function Documentation}
+\mbox{\label{auton_8h_a03a34944509a90384c5e0d7494c762ce}} 
+\index{auton.\+h@{auton.\+h}!far\+Routine@{far\+Routine}}
+\index{far\+Routine@{far\+Routine}!auton.\+h@{auton.\+h}}
+\paragraph{far\+Routine()}
+{\footnotesize\ttfamily void far\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+begins the autonomous routine from the square farthest from the flag 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition at line \textbf{ 70} of file \textbf{ auto.\+c}.
+
+
+
+References \textbf{ flywheel\+Set()}, \textbf{ intake\+Set()}, and \textbf{ task\+Delay()}.
+
+
+\begin{DoxyCode}
+00070                   \{
+00071   flywheelSet(120);
+00072   taskDelay(4000);
+00073   intakeSet(forward);
+00074   taskDelay(1800);
+00075   motorStopAll();
+00076   \}
+\end{DoxyCode}
+\mbox{\label{auton_8h_a91e751e72f029bd76a19bb6e40d570ce}} 
+\index{auton.\+h@{auton.\+h}!near\+Routine@{near\+Routine}}
+\index{near\+Routine@{near\+Routine}!auton.\+h@{auton.\+h}}
+\paragraph{near\+Routine()}
+{\footnotesize\ttfamily void near\+Routine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+begins the autonomous routine from the square nearest to the flag 
+
+\begin{DoxyDate}{Date}
+11/10/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Michael Baraty 
+\end{DoxyAuthor}
+
+
+Definition at line \textbf{ 44} of file \textbf{ auto.\+c}.
+
+
+
+References \textbf{ flywheel\+Set()}, \textbf{ intake\+Set()}, and \textbf{ task\+Delay()}.
+
+
+\begin{DoxyCode}
+00044                    \{
+00045   \textcolor{comment}{//fire up the flywheels}
+00046   flywheelSet(70);
+00047   taskDelay(4000);
+00048   intakeSet(forward);
+00049   taskDelay(1800);
+00050   motorStopAll();
+00051 
+00052   \textcolor{comment}{//drive for bottom flag}
+00053   motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+00054   motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+00055   motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2 + 30);
+00056   motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+00057   taskDelay(2000);
+00058   robotStop();
+00059   taskDelay(500);
+00060 
+00061   \textcolor{comment}{//prepare for tele-op}
+00062   motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+00063   motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+00064   motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+00065   motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+00066   taskDelay(1500);
+00067   robotStop();
+00068 \}
+\end{DoxyCode}

@@ -1,0 +1,34 @@
+\subsection{main.\+h}
+\label{main_8h_source}\index{include/main.\+h@{include/main.\+h}}
+
+\begin{DoxyCode}
+00001 
+00023 \textcolor{preprocessor}{#ifndef MAIN\_H\_}
+00024 
+00025 \textcolor{comment}{// This prevents multiple inclusion, which isn't bad for this file but is good practice}
+00026 \textcolor{preprocessor}{#define MAIN\_H\_}
+00027 
+00028 \textcolor{preprocessor}{#include "API.h"}
+00029 
+00030 \textcolor{comment}{// Allow usage of this file in C++ programs}
+00031 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00032 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00033 \textcolor{preprocessor}{#endif}
+00034 
+00035 \textcolor{comment}{// A function prototype looks exactly like its declaration, but with a semicolon instead of}
+00036 \textcolor{comment}{// actual code. If a function does not match a prototype, compile errors will occur.}
+00037 
+00038 \textcolor{comment}{// Prototypes for initialization, operator control and autonomous}
+00039 
+00054 \textcolor{keywordtype}{void} autonomous();
+00063 \textcolor{keywordtype}{void} initializeIO();
+00077 \textcolor{keywordtype}{void} initialize();
+00095 \textcolor{keywordtype}{void} operatorControl();
+00096 
+00097 \textcolor{comment}{// End C++ export structure}
+00098 \textcolor{preprocessor}{#ifdef \_\_cplusplus}
+00099 \}
+00100 \textcolor{preprocessor}{#endif}
+00101 
+00102 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

@@ -1,0 +1,27 @@
+\subsection{auton.\+h}
+\label{auton_8h_source}\index{include/auton.\+h@{include/auton.\+h}}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{preprocessor}{#ifndef \_AUTON\_H\_}
+00009 \textcolor{preprocessor}{#define \_AUTON\_H\_}
+00010 
+00011 \textcolor{preprocessor}{#include "API.h"}
+00012 
+00018 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{
+00019   far = 0,
+00020   near = 1,
+00021   none = 2
+00022 \} AutonRoutine;
+00023 
+00029 \textcolor{keyword}{static} AutonRoutine routine = none;
+00030 
+00031 
+00037 \textcolor{keywordtype}{void} nearRoutine();
+00038 
+00044 \textcolor{keywordtype}{void} farRoutine();
+00045 
+00046 
+00047 
+00048 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

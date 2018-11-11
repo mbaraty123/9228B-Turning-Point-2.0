@@ -1,0 +1,115 @@
+\subsection{src/init.c File Reference}
+\label{init_8c}\index{src/init.\+c@{src/init.\+c}}
+
+
+File for initialization code.  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gyro.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}potentiometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}encoders.\+h\char`\"{}}\newline
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ initialize\+IO} ()
+\item 
+void \textbf{ initialize} ()
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+File for initialization code. 
+
+This file should contain the user \doxyref{initialize()}{p.}{d8/d60/init_8c_a25a40b6614565f755233080a384c35f1} function and any functions related to it.
+
+Any copyright is dedicated to the Public Domain. {\tt http\+://creativecommons.\+org/publicdomain/zero/1.\+0/}
+
+P\+R\+OS contains Free\+R\+T\+OS ({\tt http\+://www.\+freertos.\+org}) whose source code may be obtained from {\tt http\+://sourceforge.\+net/projects/freertos/files/} or on request. 
+
+Definition in file \textbf{ init.\+c}.
+
+
+
+\subsubsection{Function Documentation}
+\mbox{\label{init_8c_a25a40b6614565f755233080a384c35f1}} 
+\index{init.\+c@{init.\+c}!initialize@{initialize}}
+\index{initialize@{initialize}!init.\+c@{init.\+c}}
+\paragraph{initialize()}
+{\footnotesize\ttfamily void initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Runs user initialization code. This function will be started in its own task with the default priority and stack size once when the robot is starting up. It is possible that the V\+E\+Xnet communication link may not be fully established at this time, so reading from the V\+EX Joystick may fail.
+
+This function should initialize most sensors (gyro, encoders, ultrasonics), L\+C\+Ds, global variables, and I\+M\+Es.
+
+This function must exit relatively promptly, or the \doxyref{operator\+Control()}{p.}{d4/dbf/main_8h_ac71a94af413917f27d108e95c4d6f6a7} and \doxyref{autonomous()}{p.}{d4/dbf/main_8h_a3c7ca506bbc071fa740de13805b7f376} tasks will not start. An autonomous mode selection menu like the pre\+\_\+auton() in other environments can be implemented in this task if desired. 
+
+Definition at line \textbf{ 42} of file \textbf{ init.\+c}.
+
+
+
+References \textbf{ ime\+Initialize\+All()}, and \textbf{ init\+\_\+main\+\_\+gyro()}.
+
+
+\begin{DoxyCode}
+00042                   \{
+00043   init_main_gyro();
+00044   imeInitializeAll();
+00045 \textcolor{comment}{/*  init\_main\_lcd(uart2);}
+00046 \textcolor{comment}{}
+00047 \textcolor{comment}{  setTeamName("9228B");}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{}
+00050 \textcolor{comment}{lcdSetBacklight(uart2, false);}
+00051 \textcolor{comment}{}
+00052 \textcolor{comment}{lcdSetText(uart2, 1, "Auton Routine");}
+00053 \textcolor{comment}{lcdSetText(uart2, 2, "NEAR   FAR   NONE");}
+00054 \textcolor{comment}{}
+00055 \textcolor{comment}{}
+00056 \textcolor{comment}{//lcdPrint(uart1, 1, "Auton Routine");}
+00057 \textcolor{comment}{//lcdPrint(uart1, 2, "NEAR       FAR       NONE");}
+00058 \textcolor{comment}{}
+00059 \textcolor{comment}{unsigned int btnsPressed = lcdReadButtons(uart2);}
+00060 \textcolor{comment}{}
+00061 \textcolor{comment}{  if(btnsPressed & 0x1) \{}
+00062 \textcolor{comment}{    routine = near;}
+00063 \textcolor{comment}{    lcdClear(uart2);}
+00064 \textcolor{comment}{    lcdPrint(uart2, 1, "left pressed");}
+00065 \textcolor{comment}{  \} else if (btnsPressed & 0x2) \{}
+00066 \textcolor{comment}{    routine = far;}
+00067 \textcolor{comment}{    lcdClear(uart2);}
+00068 \textcolor{comment}{    lcdPrint(uart2, 1, "middle pressed");}
+00069 \textcolor{comment}{  \} else if (btnsPressed & 0x4) \{}
+00070 \textcolor{comment}{    routine = none;}
+00071 \textcolor{comment}{    lcdClear(uart2);}
+00072 \textcolor{comment}{    lcdPrint(uart2, 1, "right pressed");}
+00073 \textcolor{comment}{  \}}
+00074 \textcolor{comment}{}
+00075 \textcolor{comment}{}
+00076 \textcolor{comment}{  lcdShutdown(uart2);}
+00077 \textcolor{comment}{}
+00078 \textcolor{comment}{}
+00079 \textcolor{comment}{  //lcdSetBacklight(uart2, false);*/}
+00080 
+00081 
+00082 
+00083 
+00084 \}
+\end{DoxyCode}
+\mbox{\label{init_8c_ad9cda921edb01125bb13c2f86bcf624b}} 
+\index{init.\+c@{init.\+c}!initialize\+IO@{initialize\+IO}}
+\index{initialize\+IO@{initialize\+IO}!init.\+c@{init.\+c}}
+\paragraph{initialize\+I\+O()}
+{\footnotesize\ttfamily void initialize\+IO (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Runs pre-\/initialization code. This function will be started in kernel mode one time while the V\+EX Cortex is starting up. As the scheduler is still paused, most A\+PI functions will fail.
+
+The purpose of this function is solely to set the default pin modes (\doxyref{pin\+Mode()}{p.}{dd/d11/API_8h_a1875409d12eee562555bda94cad7f973}) and port states (\doxyref{digital\+Write()}{p.}{dd/d11/API_8h_a23e767e5b47fa61d4e2cc02e6f15c7ab}) of limit switches, push buttons, and solenoids. It can also safely configure a U\+A\+RT port (usart\+Open()) but cannot set up an L\+CD (\doxyref{lcd\+Init()}{p.}{dd/d11/API_8h_a43dc11a67b697c0d32315ea5a9af85f9}). 
+
+Definition at line \textbf{ 26} of file \textbf{ init.\+c}.
+
+
+\begin{DoxyCode}
+00026                     \{
+00027 \}
+\end{DoxyCode}

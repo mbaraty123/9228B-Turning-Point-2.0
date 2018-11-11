@@ -27,6 +27,7 @@
 #include <stdarg.h>
 #include <stdint.h>
 #include <math.h>
+#include "stdbool.h"
 
 // Begin C++ extern to C
 #ifdef __cplusplus

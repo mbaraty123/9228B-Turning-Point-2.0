@@ -1,0 +1,155 @@
+\subsection{drive.\+c}
+\label{drive_8c_source}\index{src/drive.\+c@{src/drive.\+c}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "drive.h"}
+00002 
+00003 
+00004  \textcolor{keyword}{static} \textcolor{keywordtype}{bool} firingSpeed = \textcolor{keyword}{false};
+00005  \textcolor{keyword}{static} \textcolor{keywordtype}{bool} firingMode = \textcolor{keyword}{false};
+00006 
+00007 \textcolor{keywordtype}{void} robotStop() \{
+00008   motorSet(MOTOR_BACK_LEFT, 0);
+00009   motorSet(MOTOR_BACK_RIGHT, 0);
+00010   motorSet(MOTOR_FRONT_RIGHT, 0);
+00011   motorSet(MOTOR_FRONT_LEFT, 0);
+00012 \}
+00013 
+00014 \textcolor{keywordtype}{void} flywheelSet(\textcolor{keywordtype}{int} speed) \{
+00015   motorSet(MOTOR_FLYWHEEL_A, -speed);
+00016   motorSet(MOTOR_FLYWHEEL_B, -speed);
+00017 \}
+00018 
+00019 \textcolor{keywordtype}{void} flywheelStop() \{
+00020   flywheelSet(0);
+00021 \}
+00022 
+00023 \textcolor{keywordtype}{void} intakeSet(Direction dir) \{
+00024   \textcolor{keywordflow}{if}(dir == forward) \{
+00025     motorSet(MOTOR_INTAKE, MIN_SPEED);
+00026     motorSet(MOTOR_BELT, MAX_SPEED);
+00027   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dir == reverse) \{
+00028     motorSet(MOTOR_INTAKE, MAX_SPEED);
+00029     motorSet(MOTOR_BELT, MIN_SPEED);
+00030   \} \textcolor{keywordflow}{else} \{
+00031     motorSet(MOTOR_INTAKE, 0);
+00032     motorSet(MOTOR_BELT, 0);
+00033   \}
+00034 \}
+00035 
+00036 \textcolor{keywordtype}{void} intakeStop() \{
+00037   motorSet(MOTOR_INTAKE, 0);
+00038   motorSet(MOTOR_BELT, 0);
+00039 \}
+00040 
+00041 \textcolor{keywordtype}{void} drive() \{
+00042 
+00043 
+00044   \textcolor{keywordtype}{int} stickLX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_X);
+00045   \textcolor{keywordtype}{int} stickLY = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_LEFT_Y);
+00046   \textcolor{keywordtype}{int} stickRX = joystickGetAnalogA(JOYSTICK_MAIN, JOYSTICK_RIGHT_X);
+00047 
+00048   motorSet(MOTOR_FRONT_RIGHT, -(stickLY - stickRX - stickLX) * .99);
+00049   motorSet(MOTOR_BACK_RIGHT, -(stickLY - stickRX + stickLX) * .99);
+00050   motorSet(MOTOR_FRONT_LEFT, -(stickLY + stickRX + stickLX) * .99);
+00051   motorSet(MOTOR_BACK_LEFT, (stickLY + stickRX - stickLX) * .99);
+00052 
+00053   \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_UP)) \{
+00054     intakeSet(forward);
+00055   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 6, JOY_DOWN)) \{
+00056     intakeSet(reverse);
+00057   \} \textcolor{keywordflow}{else} \{
+00058     intakeStop();
+00059   \}
+00060 
+00061   \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 5, JOY_UP)) \{
+00062     firingMode = \textcolor{keyword}{true};
+00063   \}
+00064   \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 5, JOY_DOWN)) \{
+00065     firingMode = \textcolor{keyword}{false};
+00066   \}
+00067 
+00068   \textcolor{keywordflow}{if}(firingMode && joystickGetDigital(JOYSTICK_MAIN, 7, JOY_LEFT)) \{
+00069     firingSpeed = \textcolor{keyword}{true};
+00070   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(firingMode && joystickGetDigital(JOYSTICK_MAIN, 7, JOY_DOWN)) \{
+00071     firingSpeed = \textcolor{keyword}{false};
+00072   \}
+00073 
+00074   \textcolor{keywordflow}{if}(firingMode && firingSpeed) \{
+00075     flywheelSet(110);
+00076   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(firingMode && !firingSpeed) \{
+00077     flywheelSet(60);
+00078   \} \textcolor{keywordflow}{else} \{
+00079     flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3 >= 1? motorGet(MOTOR_FLYWHEEL_A) / 3: 0);
+00080   \}
+00081 
+00082 \textcolor{comment}{/*  if(joystickGetDigital(JOYSTICK\_MAIN, 8, JOY\_DOWN)) \{}
+00083 \textcolor{comment}{    robotStraighten();}
+00084 \textcolor{comment}{  \}*/}
+00085 
+00086   \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_UP)) \{
+00087     flipperMove(up);
+00088   \}  \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_LEFT)) \{
+00089     flipperMove(down);
+00090   \} \textcolor{keywordflow}{else} \{
+00091     flipperStop();
+00092   \}
+00093 
+00094 \}
+00095 
+00096 \textcolor{keywordtype}{void} robotSpin(Direction dir, \textcolor{keywordtype}{int} speed) \{
+00097   \textcolor{keywordflow}{if}(dir == clockwise) \{
+00098     motorSet(MOTOR_FRONT_RIGHT, -speed);
+00099     motorSet(MOTOR_FRONT_LEFT, speed);
+00100     motorSet(MOTOR_BACK_RIGHT, -speed);
+00101     motorSet(MOTOR_FRONT_LEFT, speed);
+00102   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir == counterclockwise) \{
+00103     motorSet(MOTOR_FRONT_RIGHT, speed);
+00104     motorSet(MOTOR_FRONT_LEFT, -speed);
+00105     motorSet(MOTOR_BACK_RIGHT, speed);
+00106     motorSet(MOTOR_FRONT_LEFT, -speed);
+00107   \} \textcolor{keywordflow}{else} \{
+00108     robotStop();
+00109   \}
+00110 \}
+00111 
+00112 \textcolor{keywordtype}{void} robotStraighten() \{
+00113   gyroTurn(0);
+00114 \}
+00115 
+00116 \textcolor{keywordtype}{void} robotDriveForward() \{
+00117   motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+00118   motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+00119   motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+00120   motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+00121 \}
+00122 
+00123 \textcolor{keywordtype}{void} robotDriveReverse() \{
+00124   motorSet(MOTOR_BACK_LEFT, MIN_SPEED / 2);
+00125   motorSet(MOTOR_BACK_RIGHT, MAX_SPEED / 2);
+00126   motorSet(MOTOR_FRONT_RIGHT, MAX_SPEED / 2);
+00127   motorSet(MOTOR_FRONT_LEFT, MAX_SPEED / 2);
+00128 \}
+00129 
+00130 \textcolor{keywordtype}{void} robotDriveStraight(Direction dir) \{
+00131   \textcolor{keywordflow}{if}(dir == forward) \{
+00132     robotDriveForward();
+00133   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir == reverse) \{
+00134     robotDriveReverse();
+00135   \} \textcolor{keywordflow}{else} \{
+00136     robotStop();
+00137   \}
+00138 \}
+00139 
+00140 \textcolor{keywordtype}{void} flipperMove(FlipperDirection dir) \{
+00141   \textcolor{keywordflow}{if}(dir == up) \{
+00142     motorSet(MOTOR_FLIPPER, MIN_SPEED);
+00143   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dir == down) \{
+00144     motorSet(MOTOR_FLIPPER, MAX_SPEED);
+00145   \}
+00146 \}
+00147 
+00148 \textcolor{keywordtype}{void} flipperStop() \{
+00149   motorSet(MOTOR_FLIPPER, 0);
+00150 \}
+\end{DoxyCode}
