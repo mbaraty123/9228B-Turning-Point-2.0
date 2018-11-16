@@ -79,16 +79,12 @@ void drive() {
     flywheelSet(motorGet(MOTOR_FLYWHEEL_A) / 3 >= 1? motorGet(MOTOR_FLYWHEEL_A) / 3: 0);
   }
 
-/*  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)) {
-    robotStraighten();
-  }*/
-
   if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_UP)) {
-    flipperMove(up);
+    motorSet(MOTOR_FLIPPER, MIN_SPEED);
   }  else if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_LEFT)) {
-    flipperMove(down);
+  motorSet(MOTOR_FLIPPER, MAX_SPEED);
   } else {
-    flipperStop();
+    motorSet(MOTOR_FLIPPER, 0);
   }
 
 }
@@ -110,7 +106,7 @@ void robotSpin(Direction dir, int speed) {
 }
 
 void robotStraighten() {
-  gyroTurn(0);
+//  gyroTurn(0);
 }
 
 void robotDriveForward() {
@@ -140,7 +136,7 @@ void robotDriveStraight(Direction dir) {
 void flipperMove(FlipperDirection dir) {
   if(dir == up) {
     motorSet(MOTOR_FLIPPER, MIN_SPEED);
-  } else if(dir == down) {
+  } else {
     motorSet(MOTOR_FLIPPER, MAX_SPEED);
   }
 }

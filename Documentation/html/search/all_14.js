@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['wait',['wait',['../dd/d11/API_8h.html#add8964052eef78ca864990642888a7d7',1,'API.h']]],
-  ['waituntil',['waitUntil',['../dd/d11/API_8h.html#a591705c8bd27fce32490b0bd4fb7ecd9',1,'API.h']]],
-  ['watchdoginit',['watchdogInit',['../dd/d11/API_8h.html#a8c2e4902f39a7abdea20cdf04007bb8e',1,'API.h']]]
-];

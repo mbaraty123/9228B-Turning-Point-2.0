@@ -52,7 +52,7 @@ void nearRoutine() {
   //drive for bottom flag
   motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
   motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
-  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2 + 30);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2 + 25);
   motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
   taskDelay(2000);
   robotStop();
