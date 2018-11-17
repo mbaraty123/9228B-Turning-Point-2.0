@@ -21,6 +21,12 @@ typedef enum {
   none = 2
 } AutonRoutine;
 
+typedef enum {
+  blue = 0,
+  red = 1
+} Color;
+
+
 /**
   * @brief defines the autonomous routine
   * @author Michael Baraty
@@ -28,13 +34,17 @@ typedef enum {
   */
 static AutonRoutine routine = none;
 
+static Color color;
+
 
 /**
   * @brief begins the autonomous routine from the square nearest to the flag
   * @date 11/10/2018
   * @author Michael Baraty
   */
-void nearRoutine();
+void nearRoutineBlue();
+
+void nearRoutineRed();
 
 /**
   * @brief begins the autonomous routine from the square farthest from the flag

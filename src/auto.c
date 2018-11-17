@@ -31,9 +31,12 @@
 void autonomous() {
 
   routine = near;
+  color = blue;
 
-  if(routine == near) {
-    nearRoutine();
+  if(routine == near && color == blue) {
+    nearRoutineBlue();
+  } else if(routine == near && color == red) {
+    nearRoutineRed();
   } else if(routine == far) {
     farRoutine();
   }
@@ -41,7 +44,7 @@ void autonomous() {
 
 }
 
-void nearRoutine() {
+void nearRoutineBlue() {
   //fire up the flywheels
   flywheelSet(70);
   taskDelay(4000);
@@ -66,6 +69,33 @@ void nearRoutine() {
   taskDelay(1500);
   robotStop();
 }
+
+void nearRoutineRed() {
+    //fire up the flywheels
+    flywheelSet(70);
+    taskDelay(4000);
+    intakeSet(forward);
+    taskDelay(1800);
+    motorStopAll();
+
+    //drive for bottom flag
+    motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+    motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2 + 25);
+    taskDelay(2000);
+    robotStop();
+    taskDelay(500);
+
+    //prepare for tele-op
+    motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+    motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+    taskDelay(1500);
+    robotStop();
+  }
+
 
 void farRoutine() {
   flywheelSet(120);
