@@ -103,4 +103,6 @@ int imeGetAverageTicks();
  **/
 void imeResetAll();
 
+void moveSteps(int steps, int speed);
+
 #endif

@@ -18,7 +18,8 @@
 typedef enum {
   far = 0,
   near = 1,
-  none = 2
+  skills = 2,
+  none = 3
 } AutonRoutine;
 
 typedef enum {
@@ -52,6 +53,8 @@ void nearRoutineRed();
   * @author Michael Baraty
   */
 void farRoutine();
+
+void skillsRoutine();
 
 
 

@@ -37,8 +37,8 @@ void gyroTurn(int degrees, int minSpeed)
       //slow down by a fraction of degrees remaining;
       slowDown += degsRemaining / 3;
     }
-    motorSetLeft(max(minSpeed, GYRO_TURN_SPEED - slowDown) * direction);
-    motorSetRight(max(minSpeed, GYRO_TURN_SPEED - slowDown) * direction);
+    motorSetLeft(max(-80, GYRO_TURN_SPEED - slowDown) * direction);
+    motorSetRight(max(-80, GYRO_TURN_SPEED - slowDown) * direction);
     wait(20);
   }
   robotStop();

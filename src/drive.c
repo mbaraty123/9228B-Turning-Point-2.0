@@ -147,10 +147,10 @@ void flipperStop() {
 
 void motorSetLeft(int speed) {
   motorSet(MOTOR_FRONT_LEFT, speed);
-  motorSet(MOTOR_BACK_LEFT, speed);
+  motorSet(MOTOR_BACK_LEFT, -speed);
 }
 
 void motorSetRight(int speed) {
-  motorSet(MOTOR_FRONT_RIGHT, speed);
-  motorSet(MOTOR_BACK_RIGHT, speed);
+  motorSet(MOTOR_FRONT_RIGHT, -speed);
+  motorSet(MOTOR_BACK_RIGHT, -speed);
 }

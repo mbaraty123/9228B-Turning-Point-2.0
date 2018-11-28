@@ -56,23 +56,13 @@ void imeResetAll() {
   imeReset(IME_BACK_LEFT);
   imeReset(IME_BACK_RIGHT);
 }
-/*
-void driveDistance(int distance, int speed, void (*functionPtr)(int),
-                           void (*start_function)(void *)) {
-  //int initial = ime_get_average(false);
-  TaskHandle task;
-  if (start_function != NULL) {
-    task = taskCreate(start_function, TASK_DEFAULT_STACK_SIZE, NULL,
-                      TASK_PRIORITY_DEFAULT);
-  }
 
-  int initial = imeGetAverageTicks();
-
-  while(abs(imeGetAverageTicks() - initial) < distance){
-    robotDriveForward();
-    printf("%d", abs(imeGetAverageTicks()));
-    wait(30);
+void moveSteps(int steps, int speed) {
+  int start = imeGetTicks(IME_BACK_LEFT);
+  while (abs(imeGetTicks(IME_BACK_LEFT) - start) < steps)
+  {
+    motorSetLeft(-speed);
+    motorSetRight(speed);
   }
   robotStop();
-
-}*/
+}

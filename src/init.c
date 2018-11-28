@@ -40,10 +40,9 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
-//  init_main_gyro();
-//  imeInitializeAll();
-//  setTeamName("Mecha Beagles- A Man, A Plan, A Canal-- Panama");
-setTeamName("9228B");
+  init_main_gyro();
+  //imeInitializeAll();
+  setTeamName("9228B");
 
 
 /*  init_main_lcd(uart2);

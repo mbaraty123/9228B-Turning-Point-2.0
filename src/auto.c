@@ -13,6 +13,7 @@
 #include <main.h>
 #include "drive.h"
 #include "auton.h"
+#include "encoders.h"
 
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
@@ -39,7 +40,21 @@ void autonomous() {
     nearRoutineRed();
   } else if(routine == far) {
     farRoutine();
+  } else if(routine == skills) {
+    skillsRoutine();
   }
+}
+
+void skillsRoutine() {
+  flywheelSet(70);
+  taskDelay(4000);
+  intakeSet(forward);
+  taskDelay(1800);
+  motorStopAll();
+
+  gyroTurn(1, 5);
+  moveSteps(1500, 127);
+  imeResetAll();
 
 
 }
@@ -68,6 +83,7 @@ void nearRoutineBlue() {
   motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
   taskDelay(1500);
   robotStop();
+
 }
 
 void nearRoutineRed() {
