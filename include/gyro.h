@@ -23,16 +23,14 @@
   * @author Michael Baraty
   * @date 11/10/2018
   */
-int gyroGetA();
+int getGyro();
 
 /**
  * Special Gyro multiplier for tuning in Gyro
  * @todo
  */
 #define GYRO_MULTIPLIER 196
-#define GYRO_TURN_SPEED_MAX 80
-#define GYRO_TURN_SPEED_MIN_NORMAL 33
-#define GYRO_TURN_SPEED_MIN_FAST 45
+#define GYRO_TURN_SPEED 100
 
 /**
  * @brief Initializes the main robot gryoscope/
@@ -49,6 +47,8 @@ bool init_main_gyro();
  *  @author Michael Baraty
  *  @date 10/31/18
  */
-void gyroTurn(int degrees);
+void gyroTurn(int degrees, int minSpeed);
+
+int max(int a, int b);
 
 #endif

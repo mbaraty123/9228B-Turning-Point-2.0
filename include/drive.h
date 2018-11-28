@@ -146,4 +146,8 @@ void flipperMove(FlipperDirection dir);
   */
 void flipperStop();
 
+void motorSetRight(int speed);
+
+void motorSetLeft(int speed);
+
 #endif
