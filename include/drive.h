@@ -146,8 +146,20 @@ void flipperMove(FlipperDirection dir);
   */
 void flipperStop();
 
+/**
+  * @brief sets the speed for the right motors
+  * @param speed
+  * @author Michael Baraty
+  * @date 12/4/2018
+  */
 void motorSetRight(int speed);
 
+/**
+  * @brief sets the speed for the left motors
+  * @param speed
+  * @author Michael Baraty
+  * @date 12/4/2018
+  */
 void motorSetLeft(int speed);
 
 #endif

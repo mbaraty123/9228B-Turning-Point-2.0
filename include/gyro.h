@@ -49,6 +49,13 @@ bool init_main_gyro();
  */
 void gyroTurn(int degrees, int minSpeed);
 
+/**
+ *  @brief Returns the larger number between a and b
+ *  @param a
+ *  @param b
+ *  @author Michael Baraty
+ *  @date 10/31/18
+ */
 int max(int a, int b);
 
 #endif

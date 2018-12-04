@@ -103,6 +103,13 @@ int imeGetAverageTicks();
  **/
 void imeResetAll();
 
+/**
+ * @brief moves at a given velocity for a certain number of ticks
+ * @param steps
+ * @param speed
+ * @author Michael Baraty
+ * @date 11/8/2018
+ **/
 void moveSteps(int steps, int speed);
 
 #endif
