@@ -88,7 +88,7 @@ void drive() {
   }
 
   if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)){
-    autonomous();
+//    autonomous();
   }
 
 }
