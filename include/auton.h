@@ -52,7 +52,9 @@ void nearRoutineRed();
   * @date 11/10/2018
   * @author Michael Baraty
   */
-void farRoutine();
+void farRoutineRed();
+
+void farRoutineBlue();
 
 void skillsRoutine();
 

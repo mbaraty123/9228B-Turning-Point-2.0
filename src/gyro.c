@@ -15,14 +15,14 @@ int getGyro() {
 void gyroTurn(int degrees, int minSpeed)
 {
   int direction;
-  //postive direction means turning right (posiive degrees)
+  //postive direction means turning right (positive degrees)
   if (degrees > 0)
   {
-    direction = 1;
+    direction = -1;
   }
   else
   {
-    direction = -1;
+    direction = 1;
   }
   degrees -= degrees / 10;
   int initial = getGyro();

@@ -1,5 +1,5 @@
 #include "drive.h"
-
+#include "main.h"
 
  static bool firingSpeed = false;
  static bool firingMode = false;
@@ -85,6 +85,10 @@ void drive() {
   motorSet(MOTOR_FLIPPER, MAX_SPEED);
   } else {
     motorSet(MOTOR_FLIPPER, 0);
+  }
+
+  if(joystickGetDigital(JOYSTICK_MAIN, 8, JOY_DOWN)){
+    autonomous();
   }
 
 }

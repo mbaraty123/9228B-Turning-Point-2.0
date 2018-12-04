@@ -472,7 +472,7 @@ void speakerShutdown();
  * value of this function is important to ensure that all IMEs are plugged in and responding as
  * expected.
  *
- * This function, unlike the other IME functions, is not thread safe. If using imeInitializeAll
+ * This function, unlike the other IME functions, is not thread safe. If using imeAll
  * to re-initialize encoders, calls to other IME functions might behave unpredictably during
  * this function's execution.
  *

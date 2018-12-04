@@ -58,8 +58,8 @@ void imeResetAll() {
 }
 
 void moveSteps(int steps, int speed) {
-  int start = imeGetTicks(IME_BACK_LEFT);
-  while (abs(imeGetTicks(IME_BACK_LEFT) - start) < steps)
+  imeResetAll();
+  while (abs(imeGetTicks(IME_BACK_LEFT)) < steps)
   {
     motorSetLeft(-speed);
     motorSetRight(speed);

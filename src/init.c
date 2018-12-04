@@ -14,6 +14,7 @@
 #include "gyro.h"
 #include "potentiometer.h"
 #include "encoders.h"
+#include "lcd.h"
 
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
@@ -41,45 +42,50 @@ void initializeIO() {
  */
 void initialize() {
   init_main_gyro();
-  //imeInitializeAll();
+  //imeInit();
   setTeamName("9228B");
 
+/*  usartInit(uart2, 1000000, SERIAL_DATABITS_8);
+  lcdClear(uart2);
 
-/*  init_main_lcd(uart2);
 
 
-
-lcdSetBacklight(uart2, false);
+lcdSetBacklight(uart2, true);
 
 lcdSetText(uart2, 1, "Auton Routine");
-lcdSetText(uart2, 2, "NEAR   FAR   NONE");
-
-
-//lcdPrint(uart1, 1, "Auton Routine");
-//lcdPrint(uart1, 2, "NEAR       FAR       NONE");
+lcdSetText(uart2, 2, "NEAR   FAR  NONE");
 
 unsigned int btnsPressed = lcdReadButtons(uart2);
 
-  if(btnsPressed & 0x1) {
+  if(btnsPressed == 0x1) {
     routine = near;
     lcdClear(uart2);
     lcdPrint(uart2, 1, "left pressed");
-  } else if (btnsPressed & 0x2) {
+  } else if (btnsPressed == 0x2) {
     routine = far;
     lcdClear(uart2);
     lcdPrint(uart2, 1, "middle pressed");
-  } else if (btnsPressed & 0x4) {
+  } else if (btnsPressed == 0x4) {
     routine = none;
     lcdClear(uart2);
     lcdPrint(uart2, 1, "right pressed");
   }
 
+  if(routine == near) {
+    lcdSetText(uart2, 1, "Color:");
+    lcdSetText(uart2, 2, "RED         BLUE");
+    if(btnsPressed == 0x1) {
+      color = red;
+      lcdClear(uart2);
+      lcdPrint(uart2, 1, "set red");
+    } else if (btnsPressed == 0x4) {
+      color = blue;
+      lcdClear(uart2);
+      lcdPrint(uart2, 1, "right pressed");
+    }
+  }
 
-  lcdShutdown(uart2);
-
-
-  //lcdSetBacklight(uart2, false);*/
-
+  lcdShutdown(uart2);*/
 
 
 

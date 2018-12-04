@@ -31,15 +31,17 @@
  */
 void autonomous() {
 
-  routine = near;
+  routine = far;
   color = blue;
 
   if(routine == near && color == blue) {
     nearRoutineBlue();
   } else if(routine == near && color == red) {
     nearRoutineRed();
-  } else if(routine == far) {
-    farRoutine();
+  } else if(routine == far && color == red) {
+    farRoutineRed();
+  } else if(routine == far && color == blue) {
+    farRoutineBlue();
   } else if(routine == skills) {
     skillsRoutine();
   }
@@ -47,20 +49,45 @@ void autonomous() {
 
 void skillsRoutine() {
   flywheelSet(70);
-  taskDelay(4000);
+  taskDelay(2500);
   intakeSet(forward);
   taskDelay(1800);
   motorStopAll();
 
-  gyroTurn(1, 5);
-  moveSteps(1500, 127);
-  imeResetAll();
+  motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2 + 25);
+  taskDelay(2000);
+  robotStop();
+
+  motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+  taskDelay(1000);
+  robotStop();
+
+  gyroTurn(390, 10);
+
+  robotDriveForward();
+  delay(300);
+  flipperMove(down);
+  motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+  delay(800);
+  robotStop();
+  flipperMove(up);
+  delay(300);
+  flipperStop();
 
 
 }
 
 void nearRoutineBlue() {
-  //fire up the flywheels
+  /*//fire up the flywheels
   flywheelSet(70);
   taskDelay(4000);
   intakeSet(forward);
@@ -82,12 +109,47 @@ void nearRoutineBlue() {
   motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
   motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
   taskDelay(1500);
+  robotStop();*/
+
+  flywheelSet(70);
+  taskDelay(2500);
+  intakeSet(forward);
+  taskDelay(1800);
+  motorStopAll();
+
+  motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2 + 25);
+  motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2);
+  taskDelay(1800);
   robotStop();
+
+  motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+  taskDelay(1000);
+  robotStop();
+
+  gyroTurn(150, 10);
+
+  robotDriveForward();
+  delay(300);
+  flipperMove(down);
+  motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+  motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+  motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+  delay(800);
+  robotStop();
+  flipperMove(up);
+  delay(300);
+  flipperStop();
 
 }
 
 void nearRoutineRed() {
-    //fire up the flywheels
+    /*//fire up the flywheels
     flywheelSet(70);
     taskDelay(4000);
     intakeSet(forward);
@@ -109,14 +171,86 @@ void nearRoutineRed() {
     motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
     motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
     taskDelay(1500);
+    robotStop();*/
+
+    flywheelSet(70);
+    taskDelay(2500);
+    intakeSet(forward);
+    taskDelay(1800);
+    motorStopAll();
+
+    motorSet(MOTOR_BACK_LEFT, MAX_SPEED / 2);
+    motorSet(MOTOR_BACK_RIGHT, MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_RIGHT, MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_LEFT, MIN_SPEED / 2 + 25);
+    taskDelay(1800);
     robotStop();
+
+    motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+    motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+    taskDelay(1000);
+    robotStop();
+
+    gyroTurn(390, 10);
+
+    robotDriveForward();
+    delay(300);
+    flipperMove(down);
+    motorSet(MOTOR_BACK_LEFT, -MAX_SPEED / 2);
+    motorSet(MOTOR_BACK_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_RIGHT, -MIN_SPEED / 2);
+    motorSet(MOTOR_FRONT_LEFT, -MIN_SPEED / 2);
+    delay(800);
+    robotStop();
+    flipperMove(up);
+    delay(300);
+    flipperStop();
   }
 
 
-void farRoutine() {
-  flywheelSet(120);
-  taskDelay(4000);
+void farRoutineRed() {
+  flywheelSet(127);
+  taskDelay(5000);
   intakeSet(forward);
   taskDelay(1800);
   motorStopAll();
+
+  robotDriveReverse();
+  delay(1000);
+  robotStop();
+  gyroTurn(355, 10);
+  robotDriveReverse();
+  delay(300);
+  flipperMove(down);
+  delay(1700);
+  robotStop();
+  delay(500);
+  flipperMove(up);
+  delay(300);
+  flipperStop();
+
   }
+
+void farRoutineBlue() {
+  flywheelSet(127);
+  taskDelay(5000);
+  intakeSet(forward);
+  taskDelay(1800);
+  motorStopAll();
+
+  robotDriveReverse();
+  delay(800);
+  robotStop();
+  gyroTurn(355 - 250, 10);
+  robotDriveReverse();
+  delay(300);
+  flipperMove(down);
+  delay(1700);
+  robotStop();
+  delay(500);
+  flipperMove(up);
+  delay(300);
+  flipperStop();
+}
