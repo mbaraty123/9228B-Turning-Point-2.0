@@ -31,8 +31,8 @@
  */
 void autonomous() {
 
-  routine = near;
-  color = red;
+  routine = far;
+  color = blue;
 
   if(routine == near && color == blue) {
     nearRoutineBlue();
@@ -68,7 +68,7 @@ void skillsRoutine() {
   taskDelay(1000);
   robotStop();
 
-  gyroTurn(390, 10);
+  gyroTurn(390, 40);
 
   robotDriveForward();
   delay(300);
@@ -131,7 +131,7 @@ void nearRoutineBlue() {
   taskDelay(1000);
   robotStop();
 
-  gyroTurn(150, 10);
+  gyroTurn(150, 40);
 
   robotDriveForward();
   delay(300);
@@ -193,7 +193,7 @@ void nearRoutineRed() {
     taskDelay(1000);
     robotStop();
 
-    gyroTurn(390, 10);
+    gyroTurn(390, 40);
 
     robotDriveForward();
     delay(300);
@@ -220,7 +220,7 @@ void farRoutineRed() {
   robotDriveReverse();
   delay(1000);
   robotStop();
-  gyroTurn(400, 10);
+  gyroTurn(400, 40);
   robotDriveReverse();
   delay(300);
   flipperMove(down);
@@ -243,7 +243,7 @@ void farRoutineBlue() {
   robotDriveReverse();
   delay(900);
   robotStop();
-  gyroTurn(130, 10);
+  gyroTurn(130, 40);
   robotDriveReverse();
   delay(300);
   flipperMove(down);
