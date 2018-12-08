@@ -72,7 +72,7 @@ void drive() {
   }
 
   if(firingMode && firingSpeed) {
-    flywheelSet(110);
+    flywheelSet(122);
   } else if(firingMode && !firingSpeed) {
     flywheelSet(60);
   } else {
